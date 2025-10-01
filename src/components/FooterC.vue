@@ -19,7 +19,7 @@
     </nav>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { BButton } from 'bootstrap-vue-next';
 import { RouterLink } from 'vue-router'
 const navItems = [

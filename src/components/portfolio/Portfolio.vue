@@ -3,12 +3,11 @@
     <!-- <div class="d-flex gap-3 alignn-items-center justify-content-center flex-wrap"> -->
     <BRow>
         <BCol>
-            <div class="bold">
-                <p> Hola, soy Daniel Hernández<br>
-                    Desarrollador Full Stack<br>
-                    Ayudo a empresas y startups a construir soluciones web eficientes, seguras y escalables.
-                </p>
-            </div>
+            <h3>Hola, soy <b>Daniel Hernández</b></h3>
+            <p> Desarrollador Full Stack<br>
+                Ayudo a empresas y startups a construir soluciones web eficientes, seguras y escalables.
+                Programas de contabilidad, CRM, ERP, tiendas en línea, blogs y más.
+            </p>
         </BCol>
         <BCol>
 
