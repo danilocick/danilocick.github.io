@@ -10,31 +10,35 @@ import Portfolio from '@/components/portfolio/Portfolio.vue';
 </script>
 
 <template>
-    <div id="intro" class="intro">
-        <div class="row justify-content-md-center align-items-center">
-            <div class="col-5">
+    <div id="intro" class="intro align-items-center text-center text-dark py-5">
+        <BRow class="row  justify-content-sm-center justify-content-md-evenly align-items-center">
+            <BCol md="8" sm="10" class="align-items-center mb-1">
                 <div class="overlay text-center text-white">
                     <h2 class="card-title fw-bold mb-3 text-black">Desarrollador Full Stack</h2>
                     <p class="card-text mb-3 text-black text-muted">
                         ASP.NET Core | Vue.js | Node.js | SQL Server | PostgreSQL | Azure
                     </p>
                 </div>
-            </div>
-            <div class="col-4">
-                <img :src="userImage" alt="User Image" class="img-fluid" />
-            </div>
-        </div>
+            </BCol>
+            <BCol md="4" sm="10" class="text-center">
+                <img :src="userImage" id="user-image" alt="User Image" class="img-fluid" />
+            </BCol>
+        </BRow>
     </div>
 
-    <div class="py-4">
-        <div class="container">
-            <Portfolio />
-        </div>
+    <div class="container text-center mt-4">
+        <h3>Hola, soy <b>Daniel Hernández</b></h3>
+        <p> Desarrollador Full Stack<br>
+            Ayudo a empresas y startups a construir soluciones web eficientes, seguras y escalables.
+            Programas de contabilidad, CRM, ERP, tiendas en línea, blogs y más.
+        </p>
     </div>
 
     <hr />
-    <div class="container my-3">
-        <Services />
+    <div class="bg-light pb-4">
+        <div class="container">
+            <Portfolio />
+        </div>
     </div>
 
     <div class="my-3 container">
@@ -48,6 +52,10 @@ import Portfolio from '@/components/portfolio/Portfolio.vue';
 // .bg-brand {
 //     background-color: map-get($theme-colors, 'brand');
 // }
+
+#user-image {
+    max-width: 250px;
+}
 
 .intro {
     background-image: url('@/assets/colorful-stingrays.svg');

@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-lg shadow-sm ">
         <div class="container">
             <a class="navbar-brand" href="/">
-                <span class="secondary">Dani</span>dev
+                <span class="etiqueta">Dani</span>dev
             </a>
             <BButton class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,6 +34,10 @@ const navItems = [
 @use "../assets/custom.scss" as *;
 
 .navbar {
-    background-color: $blue-100;
+    background-color: $teal-100;
+}
+
+.etiqueta {
+    color: $green-700;
 }
 </style>
