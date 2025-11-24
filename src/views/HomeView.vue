@@ -10,9 +10,9 @@ import Portfolio from '@/components/portfolio/Portfolio.vue';
 </script>
 
 <template>
-    <div id="intro" class="intro align-items-center text-center text-dark py-5">
-        <BRow class="row  justify-content-sm-center justify-content-md-evenly align-items-center">
-            <BCol md="8" sm="10" class="align-items-center mb-1">
+    <div class="intro text-dark ">
+        <BRow align-h="evenly" align-v="center">
+            <BCol md="5" sm="10" class="align-items-center">
                 <div class="overlay text-center text-white">
                     <h2 class="card-title fw-bold mb-3 text-black">Desarrollador Full Stack</h2>
                     <p class="card-text mb-3 text-black text-muted">
@@ -47,12 +47,6 @@ import Portfolio from '@/components/portfolio/Portfolio.vue';
 </template>
 
 <style scoped lang="scss">
-// @import '@/assets/custom.scss';
-
-// .bg-brand {
-//     background-color: map-get($theme-colors, 'brand');
-// }
-
 #user-image {
     max-width: 250px;
 }
@@ -65,11 +59,7 @@ import Portfolio from '@/components/portfolio/Portfolio.vue';
     background-position: center;
     // min-height: 50vh;
     max-height: 560px;
-    /* Ajusta la altura según lo que necesites */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
+    padding-top: 8px;
 }
 
 .overlay {
@@ -77,5 +67,24 @@ import Portfolio from '@/components/portfolio/Portfolio.vue';
     /* opcional: un velo para que se lean mejor los textos */
     border-radius: 1rem;
     padding: 2rem;
+}
+
+
+@media (max-width: 600px) {
+    #user-image {
+        max-width: 200px;
+    }
+
+    .intro {
+        max-height: 500px;
+        padding: 2rem 0;
+        padding-top: 0;
+        margin-top: 0;
+    }
+
+    .overlay {
+        padding: 1rem;
+        border-radius: 0;
+    }
 }
 </style>

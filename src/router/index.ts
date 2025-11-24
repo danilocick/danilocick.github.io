@@ -3,6 +3,8 @@ import HomeView from '../views/HomeView.vue'
 import AboutView from '@/views/AboutView.vue'
 import ContactView from '@/views/ContactView.vue'
 import ProjectsView from '@/views/ProjectsView.vue'
+import GaudiRView from '@/views/GaudiRView.vue'
+import DocumentationView from '@/views/DocumentationView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +28,16 @@ const router = createRouter({
       path: '/projects',
       name: 'projects',
       component: ProjectsView,
+    },
+    {
+      path: '/gaudir',
+      name: 'gaudir',
+      component: GaudiRView,
+    },
+    {
+      path: '/docs',
+      name: 'docs',
+      component: DocumentationView,
     },
 
     // route level code-splitting

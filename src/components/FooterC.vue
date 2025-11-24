@@ -1,17 +1,23 @@
 <template>
-    <nav class="navbar navbar-expand-lg shadow-sm ">
+    <nav class="navbar navbar-expand-lg shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="/">
-                <span class="etiqueta">Dani</span>dev
-            </a>
-            <BButton class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <RouterLink class="navbar-brand" to="/">
+                <span class="etiqueta">dani</span>dev
+            </RouterLink>
+
+            <!-- Toggler button -->
+            <BButton class="navbar-toggler" type="button" @click="isCollapsed = !isCollapsed" aria-controls="navbarNav"
+                :aria-expanded="!isCollapsed" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </BButton>
-            <div class="collapse navbar-collapse" id="navbarNav">
+
+            <!-- Collapsible nav -->
+            <div class="collapse navbar-collapse" :class="{ show: !isCollapsed }" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item" v-for="item in navItems" :key="item.text">
-                        <RouterLink class="nav-link" :to="item.link">{{ item.text }}</RouterLink>
+                        <RouterLink class="nav-link" :to="item.link" @click="closeMenu">
+                            {{ item.text }}
+                        </RouterLink>
                     </li>
                 </ul>
             </div>
@@ -20,14 +26,26 @@
 </template>
 
 <script setup lang="ts">
-import { BButton } from 'bootstrap-vue-next';
-import { RouterLink } from 'vue-router'
+import { ref } from "vue";
+import { BButton } from "bootstrap-vue-next";
+import { RouterLink } from "vue-router";
+
+const isCollapsed = ref(true);
+
+const closeMenu = () => {
+    // only close when in mobile view
+    if (window.innerWidth < 992) {
+        isCollapsed.value = true;
+    }
+};
+
 const navItems = [
-    { text: 'Home', link: '/' },
-    { text: 'Projects', link: '/projects' },
-    { text: 'Contact', link: '/contact' },
-    { text: 'About me', link: '/about' },
-]
+    { text: "Home", link: "/" },
+    { text: "Projects", link: "/projects" },
+    { text: "Contact", link: "/contact" },
+    { text: "About me", link: "/about" },
+    { text: "Documentation", link: "/docs" },
+];
 </script>
 
 <style scoped lang="scss">

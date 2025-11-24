@@ -1,5 +1,5 @@
 <template>
-    <h3>Proyectos Destacados</h3>
+    <h3>Proyectos Destacados: Pending TODO</h3>
     <p>Aquí puedes ver algunos de mis proyectos más recientes y destacados.</p>
 
     <BCardGroup deck>
