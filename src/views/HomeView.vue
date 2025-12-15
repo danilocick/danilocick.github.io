@@ -1,8 +1,5 @@
 <script setup lang="ts">
 import { BRow, BCol, BButton } from 'bootstrap-vue-next';
-
-import Layout from '@/components/home/HomeLayout.vue';
-import Services from '@/components/home/Services.vue';
 import Projects from '@/components/home/Projects.vue';
 
 import userImage from '@/assets/userImage.png';
