@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import Footer from '@/components/Footer.vue'
-import FooterC from '@/components/FooterC.vue'
 import { RouterView } from 'vue-router'
+import Header from './components/Header.vue';
 </script>
 
 <template>
   <div class="d-flex flex-column min-vh-100">
-    <FooterC />
+    <Header />
     <RouterView />
     <Footer />
   </div>

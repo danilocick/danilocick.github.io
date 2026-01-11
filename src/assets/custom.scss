@@ -1,10 +1,13 @@
-// 1. Import Bootstrap functions
-// @import 'bootstrap/scss/functions';
-@import 'bootstrap/scss/bootstrap';
-// BootstrapVue and its default variables
-// @import 'bootstrap-vue/src/index.scss';
+// ============================================
+// CUSTOM BOOTSTRAP CONFIGURATION
+// ============================================
 
-// Base grayscale colors definitions
+// 1. PRIMERO: Importar funciones de Bootstrap
+@import 'bootstrap/scss/functions';
+
+// 2. SEGUNDO: Definir tus colores personalizados ANTES de importar Bootstrap
+
+// Base grayscale colors
 $white: #fff !default;
 $gray-100: #f8f9fa !default;
 $gray-200: #e9ecef !default;
@@ -17,7 +20,7 @@ $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
 $black: #000 !default;
 
-// Base colors definitions
+// Base colors
 $blue: #007bff !default;
 $indigo: #6610f2 !default;
 $purple: #6f42c1 !default;
@@ -29,9 +32,12 @@ $green: #28a745 !default;
 $teal: #20c997 !default;
 $cyan: #17a2b8 !default;
 
-// Theme color default definitions
-$primary: $blue !default;
-$secondary: $gray-600 !default;
+// ============================================
+// TUS COLORES DE TEMA PERSONALIZADOS
+// ============================================
+$primary: #667eea !default; // Púrpura principal
+$secondary: #764ba2 !default; // Púrpura oscuro
+$accent: #06b6d4 !default; // Cyan/Turquesa
 $success: $green !default;
 $info: $cyan !default;
 $warning: $yellow !default;
@@ -39,18 +45,18 @@ $danger: $red !default;
 $light: $gray-100 !default;
 $dark: $gray-800 !default;
 
-// This table defines the theme colors (variant names)
-$theme-colors: () !default;
-$theme-colors: map-merge(
-  (
-    'primary': $primary,
-    'secondary': $secondary,
-    'success': $success,
-    'info': $info,
-    'warning': $warning,
-    'danger': $danger,
-    'light': $light,
-    'dark': $dark,
-  ),
-  $theme-colors
+// Mapa de colores del tema
+$theme-colors: (
+  'primary': $primary,
+  'secondary': $secondary,
+  'accent': $accent,
+  'success': $success,
+  'info': $info,
+  'warning': $warning,
+  'danger': $danger,
+  'light': $light,
+  'dark': $dark,
 );
+
+// 3. TERCERO: Importar el resto de Bootstrap
+@import 'bootstrap/scss/bootstrap';

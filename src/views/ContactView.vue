@@ -1,6 +1,6 @@
 <template>
-    <div class="min-vh-75 bg-gradient d-flex align-items-center justify-content-center p-4">
-        <div class="bg-white rounded-4 shadow-lg p-5 contact-container">
+    <div class="min-vh-100 bg-gradient d-flex align-items-center justify-content-center p-4">
+        <div class="rounded-4 shadow-lg p-5 contact-container">
             <h2 class="fs-1 fw-bold text-dark mb-2 text-center">Get In Touch</h2>
             <p class="text-muted text-center mb-4">Connect with me through any of these channels</p>
 
@@ -59,10 +59,8 @@ const contact = reactive({
 });
 </script>
 
-<style scoped>
-.bg-gradient {
-    background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
-}
+<style scoped lang="scss">
+@use "../assets/custom.scss" as custom;
 
 .contact-container {
     max-width: 28rem;
