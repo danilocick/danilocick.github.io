@@ -12,16 +12,15 @@
                                 <div class="bg-primary bg-opacity-10 rounded p-3 me-3">
                                     <i class="bi bi-cart-check fs-2 text-primary"></i>
                                 </div>
-                                <h3 class="card-title h5 mb-0">E-commerce Platform</h3>
+                                <h3 class="card-title h5 mb-0">API One Piece</h3>
                             </div>
-                            <p class="card-text text-muted mb-3">Plataforma completa de comercio electrónico con gestión
-                                de inventario, carrito de compras y pasarela de pago.</p>
+                            <p class="card-text text-muted mb-3">Get History of One Piece and filter them.</p>
                             <div class="mb-3">
                                 <span class="badge bg-light text-dark me-1">Vue.js</span>
-                                <span class="badge bg-light text-dark me-1">ASP.NET</span>
-                                <span class="badge bg-light text-dark">PostgreSQL</span>
+                                <!-- <span class="badge bg-light text-dark me-1">ASP.NET</span> -->
+                                <!-- <span class="badge bg-light text-dark">PostgreSQL</span> -->
                             </div>
-                            <a href="#" class="btn btn-outline-primary btn-sm">
+                            <a href="/onepiece" class="btn btn-outline-primary btn-sm">
                                 <i class="bi bi-box-arrow-up-right me-1"></i>Ver Proyecto
                             </a>
                         </div>
@@ -29,7 +28,7 @@
                 </div>
 
                 <!-- Proyecto 2 -->
-                <div class="col-lg-4 col-md-6">
+                <!-- <div class="col-lg-4 col-md-6">
                     <div class="card h-100 border-0 shadow-sm">
                         <div class="card-body p-4">
                             <div class="d-flex align-items-center mb-3">
@@ -50,10 +49,10 @@
                             </a>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Proyecto 3 -->
-                <div class="col-lg-4 col-md-6">
+                <!-- <div class="col-lg-4 col-md-6">
                     <div class="card h-100 border-0 shadow-sm">
                         <div class="card-body p-4">
                             <div class="d-flex align-items-center mb-3">
@@ -74,7 +73,7 @@
                             </a>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
             </div>
         </div>

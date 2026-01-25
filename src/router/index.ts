@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import ContactView from '@/views/ContactView.vue'
 import ProjectsView from '@/views/ProjectsView.vue'
 import DocumentationView from '@/views/DocumentationView.vue'
+import OnePieceApi from '@/components/onepieceapi/HomeView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +27,11 @@ const router = createRouter({
       path: '/docs',
       name: 'docs',
       component: DocumentationView,
+    },
+    {
+      path: '/onepiece',
+      name: 'onepiece',
+      component: OnePieceApi,
     },
 
     // route level code-splitting
