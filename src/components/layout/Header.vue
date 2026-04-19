@@ -28,6 +28,14 @@
                         </RouterLink>
                     </li>
 
+                    <!-- Dark mode toggle -->
+                    <li class="nav-item ms-lg-1">
+                        <button class="btn btn-sm rounded-pill px-3 py-2 border" @click="theme.toggle()"
+                            :title="theme.dark ? 'Modo claro' : 'Modo oscuro'">
+                            <i class="bi" :class="theme.dark ? 'bi-sun-fill' : 'bi-moon-fill'"></i>
+                        </button>
+                    </li>
+
                     <!-- CTA Button -->
                     <li class="nav-item ms-lg-2">
                         <RouterLink to="/contact" class="btn btn-primary rounded-pill px-4 py-2" @click="closeMenu">
@@ -42,7 +50,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, onMounted, onUnmounted } from "vue"
+import { useThemeStore } from "@/stores/theme"
+
+const theme = useThemeStore()
 import { RouterLink } from "vue-router";
 
 const isCollapsed = ref(true);
@@ -80,7 +91,7 @@ const navItems = [
 </script>
 
 <style scoped lang="scss">
-@use "../assets/custom.scss" as *;
+@use "../../assets/custom.scss" as *;
 
 .navbar {
     background-color: rgba($light, 0.95);

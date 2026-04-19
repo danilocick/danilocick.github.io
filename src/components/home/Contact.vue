@@ -1,49 +1,24 @@
 <template>
     <section id="contacto" class="py-5">
         <div class="container">
-            <h2 class="text-center display-5 fw-bold mb-5">Contacto</h2>
-            <div class="row">
-                <div class="col-lg-6 mx-auto">
-                    <div class="card border-0 shadow">
-                        <div class="card-body p-5">
-                            <form>
-                                <div class="mb-3">
-                                    <label for="nombre" class="form-label">Nombre</label>
-                                    <BFormInput type="text" class="form-control" id="nombre" placeholder="Tu nombre"
-                                        disabled />
+            <h2 class="text-center display-5 fw-bold mb-2">Contacto</h2>
+            <p class="text-center text-muted mb-5">¿Tienes un proyecto en mente? Escríbeme.</p>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="row g-3">
+                        <div class="col-md-4" v-for="link in links" :key="link.label">
+                            <a :href="link.href" :target="link.external ? '_blank' : undefined"
+                                rel="noopener"
+                                class="contact-card d-flex align-items-center gap-3 p-4 rounded-3 text-white text-decoration-none"
+                                :style="{ background: link.gradient }">
+                                <div class="icon-circle bg-white bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center flex-shrink-0">
+                                    <i :class="['bi', link.icon, 'fs-5']"></i>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">Email</label>
-                                    <BFormInput type="email" class="form-control" id="email" placeholder="tu@email.com"
-                                        disabled />
+                                <div>
+                                    <div class="fw-semibold">{{ link.label }}</div>
+                                    <div class="small opacity-75">{{ link.sub }}</div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="mensaje" class="form-label">Mensaje</label>
-                                    <BFormTextarea class="form-control" id="mensaje" rows="5"
-                                        placeholder="¿En qué puedo ayudarte?" disabled />
-                                </div>
-                                <BButton class="btn btn-primary w-100" disabled>
-                                    <i class="bi bi-send me-2"></i>Enviar Mensaje
-                                </BButton>
-                            </form>
-
-                            <hr class="my-4">
-
-                            <div class="text-center">
-                                <h5 class="mb-3">Encuéntrame también en:</h5>
-                                <div class="d-flex gap-3 justify-content-center">
-                                    <a href="https://github.com/danilocick" class="btn btn-outline-dark btn-lg">
-                                        <i class="bi bi-github"></i>
-                                    </a>
-                                    <a href="https://www.linkedin.com/in/danilocick"
-                                        class="btn btn-outline-primary btn-lg">
-                                        <i class="bi bi-linkedin"></i>
-                                    </a>
-                                    <a href="mailto:danidevhdez@gmail.com" class="btn btn-outline-danger btn-lg">
-                                        <i class="bi bi-envelope"></i>
-                                    </a>
-                                </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -51,3 +26,46 @@
         </div>
     </section>
 </template>
+
+<script setup lang="ts">
+const links = [
+    {
+        label: 'Email',
+        sub: 'danidevhdez@gmail.com',
+        icon: 'bi-envelope-fill',
+        href: 'mailto:danidevhdez@gmail.com',
+        gradient: 'linear-gradient(135deg, #ef4444 0%, #ec4899 100%)',
+        external: false,
+    },
+    {
+        label: 'LinkedIn',
+        sub: 'daniel-hernandez-martin',
+        icon: 'bi-linkedin',
+        href: 'https://www.linkedin.com/in/daniel-hernandez-martin/',
+        gradient: 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)',
+        external: true,
+    },
+    {
+        label: 'GitHub',
+        sub: 'danilocick',
+        icon: 'bi-github',
+        href: 'https://github.com/danilocick',
+        gradient: 'linear-gradient(135deg, #1f2937 0%, #111827 100%)',
+        external: true,
+    },
+]
+</script>
+
+<style scoped>
+.contact-card {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+.icon-circle {
+    width: 44px;
+    height: 44px;
+}
+</style>

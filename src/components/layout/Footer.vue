@@ -16,7 +16,7 @@
     </footer>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { BTooltip } from 'bootstrap-vue-next';
 const currentYear = new Date().getFullYear()
 

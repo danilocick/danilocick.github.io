@@ -18,7 +18,7 @@
                                         prácticos y mejores prácticas.</p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <span class="badge bg-primary">Vue.js</span>
-                                        <a href="#" class="btn btn-sm btn-outline-primary">Leer más</a>
+                                        <RouterLink to="/docs" class="btn btn-sm btn-outline-primary">Leer más</RouterLink>
                                     </div>
                                 </div>
                             </div>
@@ -40,7 +40,7 @@
                                         Core para código mantenible.</p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <span class="badge bg-success">ASP.NET</span>
-                                        <a href="#" class="btn btn-sm btn-outline-success">Leer más</a>
+                                        <RouterLink to="/docs" class="btn btn-sm btn-outline-success">Leer más</RouterLink>
                                     </div>
                                 </div>
                             </div>
@@ -62,7 +62,7 @@
                                         consultas en PostgreSQL.</p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <span class="badge bg-info">PostgreSQL</span>
-                                        <a href="#" class="btn btn-sm btn-outline-info">Leer más</a>
+                                        <RouterLink to="/docs" class="btn btn-sm btn-outline-info">Leer más</RouterLink>
                                     </div>
                                 </div>
                             </div>
@@ -84,7 +84,7 @@
                                         mantenible.</p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <span class="badge bg-warning text-dark">General</span>
-                                        <a href="#" class="btn btn-sm btn-outline-warning">Leer más</a>
+                                        <RouterLink to="/docs" class="btn btn-sm btn-outline-warning">Leer más</RouterLink>
                                     </div>
                                 </div>
                             </div>
@@ -97,5 +97,5 @@
     </section>
 </template>
 <script setup lang="ts">
-
+import { RouterLink } from 'vue-router'
 </script>
