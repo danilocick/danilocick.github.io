@@ -17,13 +17,6 @@
     <meta property="og:url" content="https://danilocick.github.io/" />
     <meta property="og:title" content="Daniel Hernández — Full Stack Developer · Vue 3 + ASP.NET Core" />
     <meta property="og:description" content="Especializado en micro-frontends con Vue 3 y Module Federation, y APIs robustas con ASP.NET Core 10." />
-    <meta property="og:image" content="https://danilocick.github.io/og-image.png" />
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Daniel Hernández — Full Stack Developer" />
-    <meta name="twitter:description" content="Especializado en micro-frontends con Vue 3 y Module Federation, y APIs robustas con ASP.NET Core 10." />
-    <meta name="twitter:image" content="https://danilocick.github.io/og-image.png" />
 
     <!-- Canonical -->
     <link rel="canonical" href="https://danilocick.github.io/" />
@@ -32,8 +25,31 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Apply theme + lang before first paint (avoids dark-mode flash) -->
+    <script>
+      (function () {
+        try {
+          if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark')
+          }
+          var lang = localStorage.getItem('locale')
+          if (lang) document.documentElement.setAttribute('lang', lang)
+        } catch (e) {}
+      })()
+    </script>
   </head>
   <body>
+    <!-- GitHub Pages SPA redirect receiver -->
+    <script>
+      (function () {
+        var p = window.location.search.match(/[?&]p=([^&]*)/);
+        if (p) {
+          var path = decodeURIComponent(p[1]);
+          window.history.replaceState(null, '', path);
+        }
+      })();
+    </script>
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
   </body>

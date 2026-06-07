@@ -1,37 +1,36 @@
 <template>
-    <section id="proyectos" class="py-5">
-        <div class="container">
-            <h2 class="text-center display-5 fw-bold mb-5">Proyectos</h2>
-            <div class="row g-4">
+    <section id="proyectos" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="mb-12 text-center">
+                <span class="kicker">{{ t('projects.kicker') }}</span>
+                <h2 class="text-3xl font-bold md:text-4xl">{{ t('projects.title') }}</h2>
+            </div>
+            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 
-                <div class="col-lg-4 col-md-6">
-                    <div class="card h-100 border-0 shadow-sm">
-                        <div class="card-body p-4">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="bg-primary bg-opacity-10 rounded p-3 me-3">
-                                    <i class="bi bi-compass fs-2 text-primary"></i>
-                                </div>
-                                <h3 class="card-title h5 mb-0">API One Piece</h3>
-                            </div>
-                            <p class="card-text text-muted mb-3">Explorador de personajes de One Piece con filtros, búsqueda y ranking de recompensas.</p>
-                            <div class="mb-3">
-                                <span class="badge bg-light text-dark me-1">Vue.js</span>
-                                <span class="badge bg-light text-dark me-1">TypeScript</span>
-                            </div>
-                            <a href="/onepiece" class="btn btn-outline-primary btn-sm">
-                                <i class="bi bi-box-arrow-up-right me-1"></i>Ver Proyecto
-                            </a>
+                <BaseCard class="h-full p-6">
+                    <div class="mb-4 flex items-center">
+                        <div class="mr-4 rounded bg-primary/10 p-4">
+                            <i class="bi bi-compass text-3xl text-primary"></i>
                         </div>
+                        <h3 class="text-lg font-semibold">{{ t('projects.onepieceTitle') }}</h3>
                     </div>
-                </div>
+                    <p class="mb-4 text-muted">{{ t('projects.onepieceDesc') }}</p>
+                    <div class="mb-4 flex flex-wrap gap-1">
+                        <BaseBadge variant="soft">Vue.js</BaseBadge>
+                        <BaseBadge variant="soft">TypeScript</BaseBadge>
+                    </div>
+                    <BaseButton href="/onepiece" variant="outline-primary" size="sm">
+                        <i class="bi bi-box-arrow-up-right"></i>{{ t('projects.viewProject') }}
+                    </BaseButton>
+                </BaseCard>
 
             </div>
         </div>
     </section>
 </template>
 
-<script setup lang="ts"></script>
-
-<style scoped lang="scss">
-@use "@/assets/custom.scss" as *;
-</style>
+<script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+import { BaseCard, BaseBadge, BaseButton } from '@/components/ui'
+const { t } = useI18n()
+</script>

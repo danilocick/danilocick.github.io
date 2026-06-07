@@ -1,116 +1,100 @@
 <template>
-    <section id="sobre-mi" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center display-5 fw-bold mb-5">Sobre Mí</h2>
-            <div class="row g-4">
+    <section id="sobre-mi" class="bg-soft py-20">
+        <div class="container mx-auto px-4">
+            <div class="mb-12 text-center">
+                <span class="kicker">{{ t('about.kicker') }}</span>
+                <h2 class="text-3xl font-bold md:text-4xl">{{ t('about.title') }}</h2>
+            </div>
+            <div class="grid gap-6 lg:grid-cols-2">
 
                 <!-- Quién soy -->
-                <div class="col-lg-6">
-                    <div class="card h-100 border-0 shadow-sm">
-                        <div class="card-body p-4">
-                            <div class="text-primary fs-1 mb-3">
-                                <i class="bi bi-person-circle"></i>
-                            </div>
-                            <h3 class="card-title h4 mb-3">¿Quién soy?</h3>
-                            <p class="card-text">
-                                Desarrollador full stack especializado en arquitecturas micro-frontend con Vue 3 y
-                                Module Federation, y APIs robustas con ASP.NET Core. Trabajo en entornos empresariales
-                                con foco en automatización, escalabilidad y código mantenible.
-                            </p>
-                            <p class="card-text text-muted small">
-                                Me interesa activamente la arquitectura de microservicios en entornos cloud Azure.
-                            </p>
-                            <div class="mt-3 d-flex gap-2 flex-wrap">
-                                <span class="badge bg-primary bg-opacity-10 text-primary">Santa Coloma de Gramenet</span>
-                                <span class="badge bg-success bg-opacity-10 text-success">Unex S.L. · Sep 2021 – hoy</span>
-                            </div>
-                        </div>
+                <BaseCard class="h-full p-6">
+                    <div class="mb-4 text-4xl text-primary">
+                        <i class="bi bi-person-circle"></i>
                     </div>
-                </div>
+                    <h3 class="mb-4 text-xl font-semibold">{{ t('about.whoTitle') }}</h3>
+                    <p class="mb-3">{{ t('about.whoBody') }}</p>
+                    <p class="text-sm text-muted">{{ t('about.whoNote') }}</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="rounded bg-primary/10 px-2 py-1 text-xs font-semibold text-primary">{{ t('hero.location') }}</span>
+                        <span class="rounded bg-success/10 px-2 py-1 text-xs font-semibold text-success">{{ t('about.badgeJob') }}</span>
+                    </div>
+                </BaseCard>
 
                 <!-- Cómo trabajo -->
-                <div class="col-lg-6">
-                    <div class="card h-100 border-0 shadow-sm">
-                        <div class="card-body p-4">
-                            <div class="text-primary fs-1 mb-3">
-                                <i class="bi bi-gear-fill"></i>
-                            </div>
-                            <h3 class="card-title h4 mb-3">Cómo trabajo</h3>
-                            <ul class="list-unstyled">
-                                <li v-for="item in softSkills" :key="item" class="mb-2">
-                                    <i class="bi bi-check-circle-fill text-success me-2"></i>{{ item }}
-                                </li>
-                            </ul>
-                            <hr class="my-3" />
-                            <small class="text-muted fw-semibold">Idiomas</small>
-                            <div class="d-flex gap-2 mt-2 flex-wrap">
-                                <span class="badge bg-secondary">🇪🇸 Castellano — Nativo</span>
-                                <span class="badge bg-secondary">🏴󠁥󠁳󠁣󠁴󠁿 Catalán — Nativo</span>
-                                <span class="badge bg-secondary">🇬🇧 Inglés — Alto</span>
-                            </div>
-                        </div>
+                <BaseCard class="h-full p-6">
+                    <div class="mb-4 text-4xl text-primary">
+                        <i class="bi bi-gear-fill"></i>
                     </div>
-                </div>
+                    <h3 class="mb-4 text-xl font-semibold">{{ t('about.howTitle') }}</h3>
+                    <ul class="list-none">
+                        <li v-for="item in softSkills" :key="item" class="mb-2">
+                            <i class="bi bi-check-circle-fill mr-2 text-success"></i>{{ t(item) }}
+                        </li>
+                    </ul>
+                    <hr class="my-4 border-line" />
+                    <small class="text-sm font-semibold text-muted">{{ t('about.languagesLabel') }}</small>
+                    <div class="mt-2 flex flex-wrap gap-2">
+                        <BaseBadge variant="secondary">{{ t('about.langEs') }}</BaseBadge>
+                        <BaseBadge variant="secondary">{{ t('about.langCa') }}</BaseBadge>
+                        <BaseBadge variant="secondary">{{ t('about.langEn') }}</BaseBadge>
+                    </div>
+                </BaseCard>
             </div>
 
             <!-- Skills con progreso -->
-            <div class="row mt-4">
-                <div class="col-12">
-                    <div class="card border-0 shadow-sm">
-                        <div class="card-body p-4">
-                            <h3 class="card-title h4 mb-4">
-                                <i class="bi bi-laptop text-primary me-2"></i>Stack Técnico
-                            </h3>
-                            <div class="row g-4">
-                                <div v-for="group in skillGroups" :key="group.label" class="col-md-6">
-                                    <h5 class="h6 mb-3" :class="group.textClass">
-                                        <i :class="['bi', group.icon, 'me-2']"></i>{{ group.label }}
-                                    </h5>
-                                    <div v-for="skill in group.skills" :key="skill.name" class="mb-3">
-                                        <div class="d-flex justify-content-between mb-1">
-                                            <small class="fw-semibold">{{ skill.name }}</small>
-                                            <small class="text-muted">{{ skill.level }}%</small>
-                                        </div>
-                                        <div class="progress" style="height: 6px;">
-                                            <div class="progress-bar" :class="group.barClass"
-                                                :style="{ width: skill.level + '%' }"></div>
-                                        </div>
-                                    </div>
+            <div class="mt-6">
+                <BaseCard class="p-6">
+                    <h3 class="mb-6 text-xl font-semibold">
+                        <i class="bi bi-laptop mr-2 text-primary"></i>{{ t('about.stackTitle') }}
+                    </h3>
+                    <div class="grid gap-6 md:grid-cols-2">
+                        <div v-for="group in skillGroups" :key="group.label">
+                            <h5 class="mb-4 text-base font-semibold" :class="group.textClass">
+                                <i :class="['bi', group.icon, 'mr-2']"></i>{{ t(group.label) }}
+                            </h5>
+                            <div v-for="skill in group.skills" :key="skill.name" class="mb-4">
+                                <div class="mb-1 flex justify-between">
+                                    <small class="text-sm font-semibold">{{ skill.name }}</small>
+                                    <small class="text-sm text-muted">{{ skill.level }}%</small>
+                                </div>
+                                <div class="h-1.5 w-full overflow-hidden rounded bg-gray-200 dark:bg-gray-700">
+                                    <div class="progress-bar h-full" :class="group.barClass"
+                                        :style="{ width: skill.level + '%' }"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </BaseCard>
             </div>
         </div>
     </section>
 </template>
 
 <script setup lang="ts">
-const softSkills = [
-    'Resolución de problemas complejos',
-    'Buena comunicación y gestión de equipos',
-    'Agilidad con los resultados',
-    'Espíritu comercial y orientación al cliente',
-]
+import { useI18n } from 'vue-i18n'
+import { BaseCard, BaseBadge } from '@/components/ui'
+const { t } = useI18n()
+
+const softSkills = ['about.soft1', 'about.soft2', 'about.soft3', 'about.soft4']
 
 const skillGroups = [
     {
-        label: 'Frontend',
+        label: 'about.groupFrontend',
         icon: 'bi-window',
         textClass: 'text-primary',
         barClass: 'bg-primary',
         skills: [
             { name: 'Vue 3 + Vite + TypeScript', level: 90 },
             { name: 'Module Federation (Micro-frontend)', level: 80 },
-            { name: 'Bootstrap + CSS3', level: 88 },
+            { name: 'Tailwind + CSS3', level: 88 },
         ],
     },
     {
-        label: 'Backend',
+        label: 'about.groupBackend',
         icon: 'bi-server',
-        textClass: 'text-success',
-        barClass: 'bg-success',
+        textClass: 'text-accent',
+        barClass: 'bg-accent',
         skills: [
             { name: 'ASP.NET Core 10 + C#', level: 90 },
             { name: 'Entity Framework Core', level: 85 },
@@ -118,10 +102,10 @@ const skillGroups = [
         ],
     },
     {
-        label: 'Bases de Datos',
+        label: 'about.groupDatabase',
         icon: 'bi-database',
-        textClass: 'text-info',
-        barClass: 'bg-info',
+        textClass: 'text-secondary',
+        barClass: 'bg-secondary',
         skills: [
             { name: 'SQL Server', level: 85 },
             { name: 'PostgreSQL', level: 70 },
@@ -129,10 +113,10 @@ const skillGroups = [
         ],
     },
     {
-        label: 'Herramientas & Cloud',
+        label: 'about.groupTools',
         icon: 'bi-tools',
-        textClass: 'text-secondary',
-        barClass: 'bg-secondary',
+        textClass: 'text-muted',
+        barClass: 'bg-gray-400 dark:bg-gray-500',
         skills: [
             { name: 'Azure (microservicios / cloud)', level: 65 },
             { name: 'Git + CI/CD', level: 80 },

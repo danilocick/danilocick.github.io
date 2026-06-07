@@ -3,16 +3,16 @@ import { createPinia } from 'pinia'
 
 import App from './App.vue'
 import router from './router'
+import i18n from './i18n'
+
+// Styles
+import 'bootstrap-icons/font/bootstrap-icons.css'
+import './assets/main.css'
 
 const app = createApp(App)
 
-// Add the necessary CSS
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue-next/dist/bootstrap-vue-next.css'
-import 'bootstrap-icons/font/bootstrap-icons.css'
-import './assets/custom.scss'
-
 app.use(createPinia())
 app.use(router)
+app.use(i18n)
 
 app.mount('#app')

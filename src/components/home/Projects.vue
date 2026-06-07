@@ -1,32 +1,31 @@
 <template>
-    <section id="proyectos" class="py-5">
-        <div class="container">
-            <h2 class="text-center display-5 fw-bold mb-2">Proyectos</h2>
-            <p class="text-center text-muted mb-5">Cosas que he construido</p>
-            <div class="row g-4 justify-content-center">
+    <section id="proyectos" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="mb-12 text-center">
+                <span class="kicker">{{ t('projects.kicker') }}</span>
+                <h2 class="text-3xl font-bold md:text-4xl">{{ t('projects.title') }}</h2>
+                <p class="mt-2 text-muted">{{ t('projects.subtitle') }}</p>
+            </div>
+            <div class="mx-auto grid max-w-4xl gap-6 sm:grid-cols-2">
 
-                <div class="col-lg-4 col-md-6" v-for="p in projects" :key="p.title">
-                    <div class="card h-100 border-0 project-card">
-                        <div class="card-body p-4">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="icon-box me-3" :class="p.iconBg">
-                                    <i :class="['bi', p.icon, 'fs-3', p.iconColor]"></i>
-                                </div>
-                                <div>
-                                    <h3 class="card-title h5 mb-0">{{ p.title }}</h3>
-                                    <span v-if="p.wip" class="badge bg-warning text-dark mt-1" style="font-size:0.65rem;">En construcción</span>
-                                </div>
-                            </div>
-                            <p class="card-text text-muted mb-3">{{ p.description }}</p>
-                            <div class="mb-4 d-flex flex-wrap gap-1">
-                                <span v-for="tag in p.tags" :key="tag" class="badge bg-light text-dark">{{ tag }}</span>
-                            </div>
-                            <a :href="p.href" :class="['btn btn-sm', p.btnClass]" :target="p.external ? '_blank' : undefined">
-                                <i class="bi bi-box-arrow-up-right me-1"></i>{{ p.cta }}
-                            </a>
+                <BaseCard v-for="p in projects" :key="p.title" class="project-card h-full p-6">
+                    <div class="mb-4 flex items-center">
+                        <div class="icon-box mr-4" :class="p.iconBg">
+                            <i :class="['bi', p.icon, 'text-2xl', p.iconColor]"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold">{{ t(p.title) }}</h3>
+                            <BaseBadge v-if="p.wip" variant="warning" class="mt-1">{{ t('projects.wip') }}</BaseBadge>
                         </div>
                     </div>
-                </div>
+                    <p class="mb-4 text-muted">{{ t(p.description) }}</p>
+                    <div class="mb-6 flex flex-wrap gap-1">
+                        <BaseBadge v-for="tag in p.tags" :key="tag" variant="soft">{{ tag }}</BaseBadge>
+                    </div>
+                    <BaseButton :href="p.href" :target="p.external ? '_blank' : undefined" size="sm" :variant="p.variant">
+                        <i class="bi bi-box-arrow-up-right"></i>{{ t(p.cta) }}
+                    </BaseButton>
+                </BaseCard>
 
             </div>
         </div>
@@ -34,47 +33,47 @@
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+import { BaseCard, BaseBadge, BaseButton } from '@/components/ui'
+const { t } = useI18n()
+
 const projects = [
     {
-        title: 'One Piece Explorer',
-        description: 'Explorador de personajes con búsqueda, filtros por afiliación y fruta del diablo, ranking de recompensas y vista tabla/grid.',
+        title: 'projects.onepieceTitle',
+        description: 'projects.onepieceDesc',
         icon: 'bi-compass',
         iconBg: 'icon-bg-primary',
         iconColor: 'text-primary',
-        tags: ['Vue 3', 'TypeScript', 'Pinia', 'Bootstrap'],
+        tags: ['Vue 3', 'TypeScript', 'Pinia', 'Tailwind'],
         href: '/onepiece',
-        btnClass: 'btn-outline-primary',
-        cta: 'Ver demo',
+        variant: 'outline-primary',
+        cta: 'projects.onepieceCta',
         wip: false,
         external: false,
     },
     {
-        title: 'Dev Dashboard',
-        description: 'Dashboard interno para gestión de proyectos, seguimiento de progreso, despliegues de API y actividad de equipo. Inspirado en el trabajo real en Unex.',
+        title: 'projects.dashboardTitle',
+        description: 'projects.dashboardDesc',
         icon: 'bi-grid-1x2',
         iconBg: 'icon-bg-secondary',
         iconColor: 'text-secondary',
         tags: ['Vue 3', 'ASP.NET Core', 'SQL Server', 'Module Federation'],
         href: '#',
-        btnClass: 'btn-outline-secondary',
-        cta: 'Próximamente',
+        variant: 'outline-secondary',
+        cta: 'projects.dashboardCta',
         wip: true,
         external: false,
     },
-]
+] as const
 </script>
 
-<style scoped lang="scss">
-@use "@/assets/custom.scss" as *;
-
+<style scoped>
 .project-card {
-    box-shadow: 0 2px 16px rgba(0,0,0,0.07);
     transition: transform 0.25s ease, box-shadow 0.25s ease;
-
-    &:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 12px 32px rgba(0,0,0,0.13);
-    }
+}
+.project-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.13);
 }
 
 .icon-box {
@@ -87,6 +86,6 @@ const projects = [
     flex-shrink: 0;
 }
 
-.icon-bg-primary { background: rgba($primary, 0.12); }
-.icon-bg-secondary { background: rgba($secondary, 0.12); }
+.icon-bg-primary { background: rgba(102, 126, 234, 0.12); }
+.icon-bg-secondary { background: rgba(118, 75, 162, 0.12); }
 </style>

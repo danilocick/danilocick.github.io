@@ -1,51 +1,51 @@
 <template>
-    <div class="border-0 shadow-sm mb-4 mt-4">
-        <div class="card-body">
-            <div class="row g-3 align-items-end">
-                <div class="col-md-4">
-                    <label class="form-label fw-semibold">
-                        <i class="bi bi-search me-2"></i>Buscar Personaje
-                    </label>
-                    <input type="text" class="form-control" v-model="store.filter.searchQuery"
-                        placeholder="Buscar por nombre...">
-                </div>
-                <div class="col-md-3">
-                    <label class="form-label fw-semibold">
-                        <i class="bi bi-funnel me-2"></i>Afiliación
-                    </label>
-                    <select class="form-select" v-model="store.filter.filterAffiliation">
-                        <option value="all">Todas</option>
-                        <option value="pirate">Piratas</option>
-                        <option value="marine">Marines</option>
-                        <option value="revolutionary">Revolucionarios</option>
-                    </select>
-                </div>
-                <div class="col-md-2">
-                    <label class="form-label fw-semibold">
-                        <i class="bi bi-apple me-2"></i>Fruta
-                    </label>
-                    <select class="form-select" v-model="store.filter.filterFruit">
-                        <option value="all">Todas</option>
-                        <option value="yes">Con fruta</option>
-                        <option value="no">Sin fruta</option>
-                    </select>
-                </div>
-                <div class="col-md-3">
-                    <label class="form-label fw-semibold">
-                        <i class="bi bi-sort-down me-2"></i>Ordenar por
-                    </label>
-                    <select class="form-select" v-model="store.filter.sortBy">
-                        <option value="name">Nombre (A-Z)</option>
-                        <option value="nameDesc">Nombre (Z-A)</option>
-                        <option value="bounty">Mayor Recompensa</option>
-                    </select>
-                </div>
+    <BaseCard class="mb-6 mt-6 p-6">
+        <div class="grid items-end gap-4 md:grid-cols-12">
+            <div class="md:col-span-4">
+                <label class="mb-1 block font-semibold">
+                    <i class="bi bi-search mr-2"></i>{{ t('onepiece.filterSearch') }}
+                </label>
+                <BaseInput v-model="store.filter.searchQuery" :placeholder="t('onepiece.filterSearchPlaceholder')" />
+            </div>
+            <div class="md:col-span-3">
+                <label class="mb-1 block font-semibold">
+                    <i class="bi bi-funnel mr-2"></i>{{ t('onepiece.filterAffiliation') }}
+                </label>
+                <BaseSelect v-model="store.filter.filterAffiliation">
+                    <option value="all">{{ t('onepiece.affAll') }}</option>
+                    <option value="pirate">{{ t('onepiece.affPirate') }}</option>
+                    <option value="marine">{{ t('onepiece.affMarine') }}</option>
+                    <option value="revolutionary">{{ t('onepiece.affRevolutionary') }}</option>
+                </BaseSelect>
+            </div>
+            <div class="md:col-span-2">
+                <label class="mb-1 block font-semibold">
+                    <i class="bi bi-apple mr-2"></i>{{ t('onepiece.filterFruit') }}
+                </label>
+                <BaseSelect v-model="store.filter.filterFruit">
+                    <option value="all">{{ t('onepiece.fruitAll') }}</option>
+                    <option value="yes">{{ t('onepiece.fruitYes') }}</option>
+                    <option value="no">{{ t('onepiece.fruitNo') }}</option>
+                </BaseSelect>
+            </div>
+            <div class="md:col-span-3">
+                <label class="mb-1 block font-semibold">
+                    <i class="bi bi-sort-down mr-2"></i>{{ t('onepiece.filterSort') }}
+                </label>
+                <BaseSelect v-model="store.filter.sortBy">
+                    <option value="name">{{ t('onepiece.sortName') }}</option>
+                    <option value="nameDesc">{{ t('onepiece.sortNameDesc') }}</option>
+                    <option value="bounty">{{ t('onepiece.sortBounty') }}</option>
+                </BaseSelect>
             </div>
         </div>
-    </div>
+    </BaseCard>
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import { useOnePieceStore } from '@/stores/onePiece'
+import { BaseCard, BaseInput, BaseSelect } from '@/components/ui'
+const { t } = useI18n()
 const store = useOnePieceStore()
 </script>

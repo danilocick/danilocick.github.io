@@ -1,28 +1,31 @@
 <template>
-    <div class="container my-5 pt-5">
-        <div class="text-center mb-1">
-            <h1 class="fw-bold">
-                <i class="bi bi-compass text-danger me-2"></i>One Piece Characters Report
+    <div class="container mx-auto my-12 px-4 pt-12">
+        <div class="mb-1 text-center">
+            <h1 class="text-3xl font-bold md:text-4xl">
+                <i class="bi bi-compass mr-2 text-primary"></i>{{ t('onepiece.title') }}
             </h1>
-            <p class="lead text-muted">Explora el mundo de piratas, marines y revolucionarios</p>
+            <p class="text-lg text-muted">{{ t('onepiece.subtitle') }}</p>
         </div>
 
         <!-- Loading -->
-        <div v-if="store.loading" class="text-center py-5">
-            <div class="spinner-border text-danger" style="width:3rem;height:3rem;" role="status">
-                <span class="visually-hidden">Cargando...</span>
+        <div v-if="store.loading" class="py-12 text-center">
+            <div class="mx-auto h-12 w-12 animate-spin rounded-full border-4 border-primary border-t-transparent"
+                role="status">
+                <span class="sr-only">{{ t('onepiece.loading') }}</span>
             </div>
-            <p class="mt-3 text-muted">Navegando por el Grand Line...</p>
+            <p class="mt-4 text-muted">{{ t('onepiece.loading') }}</p>
         </div>
 
         <!-- Error -->
-        <div v-else-if="store.error" class="alert alert-danger d-flex align-items-center gap-3" role="alert">
-            <i class="bi bi-exclamation-triangle-fill fs-4"></i>
-            <div class="flex-grow-1">
-                <strong>Error al cargar datos:</strong> {{ store.error }}
+        <div v-else-if="store.error"
+            class="flex items-center gap-4 rounded-lg border border-danger/20 bg-danger/10 p-4 text-danger" role="alert">
+            <i class="bi bi-exclamation-triangle-fill text-xl"></i>
+            <div class="flex-1">
+                <strong>{{ t('onepiece.errorTitle') }}</strong> {{ store.error }}
             </div>
-            <button class="btn btn-outline-danger btn-sm" @click="store.fetchCharacters()">
-                <i class="bi bi-arrow-clockwise me-1"></i>Reintentar
+            <button class="inline-flex items-center rounded-lg border border-danger px-3 py-1.5 text-sm font-semibold transition hover:bg-danger hover:text-white"
+                @click="store.fetchCharacters()">
+                <i class="bi bi-arrow-clockwise mr-1"></i>{{ t('onepiece.retry') }}
             </button>
         </div>
 
@@ -31,98 +34,149 @@
             <CharacterStats />
             <CharacterFilters />
 
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <span>
-                    <BBadge pill variant="danger">{{ store.filteredCharacters.length }}</BBadge>
-                    Personajes encontrados
+            <div class="mb-4 flex items-center justify-between">
+                <span class="flex items-center gap-2">
+                    <span class="rounded-full bg-primary px-2 py-1 text-xs font-semibold text-white">{{ store.filteredCharacters.length }}</span>
+                    {{ t('onepiece.foundLabel') }}
                 </span>
-                <div class="btn-group btn-group-sm" role="group">
-                    <BButton :variant="store.viewGridMode ? 'danger' : 'outline-danger'"
+                <div class="inline-flex overflow-hidden rounded-lg border border-primary">
+                    <button class="px-3 py-1.5 text-sm transition" :aria-label="t('onepiece.gridView')"
+                        :class="store.viewGridMode ? 'bg-primary text-white' : 'text-primary hover:bg-primary/10'"
                         @click="store.viewGridMode = true">
                         <i class="bi bi-grid-3x3-gap"></i>
-                    </BButton>
-                    <BButton :variant="!store.viewGridMode ? 'danger' : 'outline-danger'"
+                    </button>
+                    <button class="px-3 py-1.5 text-sm transition" :aria-label="t('onepiece.tableView')"
+                        :class="!store.viewGridMode ? 'bg-primary text-white' : 'text-primary hover:bg-primary/10'"
                         @click="store.viewGridMode = false">
                         <i class="bi bi-table"></i>
-                    </BButton>
+                    </button>
                 </div>
             </div>
 
             <!-- Grid -->
-            <div v-if="store.viewGridMode" class="row g-4 mb-4">
-                <div v-for="character in store.paginatedCharacters" :key="character.id" class="col-md-6 col-lg-4">
-                    <CharacterCard :character="character" />
-                </div>
+            <div v-if="store.viewGridMode" class="mb-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <CharacterCard v-for="character in store.paginatedCharacters" :key="character.id" :character="character" />
             </div>
 
             <!-- Table -->
-            <div v-else class="card border-0 shadow-sm mb-4">
-                <div class="table-responsive">
-                    <table class="table table-hover mb-0">
-                        <thead class="table-light">
+            <BaseCard v-else class="mb-6 overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead class="bg-soft">
                             <tr>
-                                <th>Nombre</th>
-                                <th>Trabajo</th>
-                                <th>Tripulación</th>
-                                <th>Fruta del Diablo</th>
-                                <th>Recompensa</th>
-                                <th>Estado</th>
+                                <th class="px-4 py-3 font-semibold">{{ t('onepiece.colName') }}</th>
+                                <th class="px-4 py-3 font-semibold">{{ t('onepiece.colJob') }}</th>
+                                <th class="px-4 py-3 font-semibold">{{ t('onepiece.colCrew') }}</th>
+                                <th class="px-4 py-3 font-semibold">{{ t('onepiece.colFruit') }}</th>
+                                <th class="px-4 py-3 font-semibold">{{ t('onepiece.colBounty') }}</th>
+                                <th class="px-4 py-3 font-semibold">{{ t('onepiece.colStatus') }}</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="character in store.paginatedCharacters" :key="character.id">
-                                <td>
+                            <tr v-for="character in store.paginatedCharacters" :key="character.id"
+                                class="border-t border-line hover:bg-soft">
+                                <td class="px-4 py-3">
                                     <strong>{{ character.name }}</strong>
-                                    <span v-if="character.is_captain" class="badge bg-dark ms-2">Capitán</span>
+                                    <BaseBadge v-if="character.is_captain" variant="dark" class="ml-2">{{ t('onepiece.captain') }}</BaseBadge>
                                 </td>
-                                <td>{{ character.job || '-' }}</td>
-                                <td>
-                                    <span v-if="character.crew" class="badge bg-primary">{{ character.crew.name }}</span>
+                                <td class="px-4 py-3">{{ character.job || '-' }}</td>
+                                <td class="px-4 py-3">
+                                    <BaseBadge v-if="character.crew" variant="primary">{{ character.crew.name }}</BaseBadge>
                                     <span v-else>-</span>
                                 </td>
-                                <td>
-                                    <span v-if="character.fruit" class="badge bg-danger">{{ character.fruit.name }}</span>
+                                <td class="px-4 py-3">
+                                    <BaseBadge v-if="character.fruit" variant="accent">{{ character.fruit.name }}</BaseBadge>
                                     <span v-else>-</span>
                                 </td>
-                                <td>
-                                    <span class="badge bg-warning text-dark">{{ store.formatBounty(character.bounty) }}</span>
+                                <td class="px-4 py-3">
+                                    <BaseBadge variant="warning">{{ store.formatBounty(character.bounty) }}</BaseBadge>
                                 </td>
-                                <td>
-                                    <span class="badge"
-                                        :class="character.status === 'alive' ? 'bg-success' : 'bg-secondary'">
-                                        {{ character.status === 'alive' ? 'Vivo' : 'Fallecido' }}
-                                    </span>
+                                <td class="px-4 py-3">
+                                    <BaseBadge :variant="character.status === 'alive' ? 'success' : 'secondary'">
+                                        {{ character.status === 'alive' ? t('onepiece.alive') : t('onepiece.deceased') }}
+                                    </BaseBadge>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-            </div>
+            </BaseCard>
 
-            <BPagination v-if="store.totalPages > 1" v-model="store.filter.currentPage"
-                :total-rows="store.filteredCharacters.length" :per-page="store.filter.itemsPerPage" align="center" />
+            <!-- Pagination -->
+            <div v-if="store.totalPages > 1" class="mt-6 flex flex-wrap items-center justify-center gap-1">
+                <button :aria-label="t('onepiece.prevPage')"
+                    class="rounded-lg border border-line px-3 py-1.5 text-sm transition hover:bg-soft disabled:cursor-not-allowed disabled:opacity-40"
+                    :disabled="store.filter.currentPage === 1" @click="setPage(store.filter.currentPage - 1)">
+                    <i class="bi bi-chevron-left"></i>
+                </button>
+                <template v-for="(page, i) in visiblePages" :key="i">
+                    <span v-if="page === '...'" class="px-2 py-1.5 text-muted">…</span>
+                    <button v-else
+                        class="min-w-[2.25rem] rounded-lg border px-3 py-1.5 text-sm transition"
+                        :class="page === store.filter.currentPage
+                            ? 'border-primary bg-primary text-white'
+                            : 'border-line hover:bg-soft'"
+                        @click="setPage(page as number)">
+                        {{ page }}
+                    </button>
+                </template>
+                <button :aria-label="t('onepiece.nextPage')"
+                    class="rounded-lg border border-line px-3 py-1.5 text-sm transition hover:bg-soft disabled:cursor-not-allowed disabled:opacity-40"
+                    :disabled="store.filter.currentPage === store.totalPages" @click="setPage(store.filter.currentPage + 1)">
+                    <i class="bi bi-chevron-right"></i>
+                </button>
+            </div>
 
             <TopBounties />
 
-            <div class="alert alert-info" role="alert">
-                <i class="bi bi-info-circle-fill me-2"></i>
-                <strong>API:</strong>
-                <a href="https://api-onepiece.com" target="_blank" class="alert-link">One Piece API</a>
+            <div class="flex items-center rounded-lg bg-info/10 p-4 text-info" role="alert">
+                <i class="bi bi-info-circle-fill mr-2"></i>
+                <span><strong>API:</strong>
+                    <a href="https://api-onepiece.com" target="_blank" class="font-semibold underline">One Piece API</a></span>
             </div>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue'
-import { BBadge, BButton, BPagination } from 'bootstrap-vue-next'
+import { onMounted, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useOnePieceStore } from '@/stores/onePiece'
+
+const { t } = useI18n()
 import CharacterStats from '@/components/onepiece/CharacterStats.vue'
 import CharacterFilters from '@/components/onepiece/CharacterFilters.vue'
 import CharacterCard from '@/components/onepiece/CharacterCard.vue'
 import TopBounties from '@/components/onepiece/TopBounties.vue'
+import { BaseCard, BaseBadge } from '@/components/ui'
 
 const store = useOnePieceStore()
+
+function setPage(page: number) {
+    if (page >= 1 && page <= store.totalPages) store.filter.currentPage = page
+}
+
+const visiblePages = computed<(number | '...')[]>(() => {
+    const total = store.totalPages
+    const current = store.filter.currentPage
+    const delta = 2
+    const range: number[] = []
+    for (let i = Math.max(1, current - delta); i <= Math.min(total, current + delta); i++) {
+        range.push(i)
+    }
+    const pages: (number | '...')[] = []
+    if (range[0] > 1) {
+        pages.push(1)
+        if (range[0] > 2) pages.push('...')
+    }
+    pages.push(...range)
+    const last = range[range.length - 1]
+    if (last < total) {
+        if (last < total - 1) pages.push('...')
+        pages.push(total)
+    }
+    return pages
+})
 
 onMounted(() => store.fetchCharacters())
 </script>

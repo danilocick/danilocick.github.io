@@ -1,49 +1,49 @@
 <template>
-    <div class="min-vh-100 bg-gradient d-flex align-items-center justify-content-center p-4">
-        <div class="rounded-4 shadow-lg p-5 contact-container">
-            <h2 class="fs-1 fw-bold text-dark mb-2 text-center">Get In Touch</h2>
-            <p class="text-muted text-center mb-4">Connect with me through any of these channels</p>
+    <div class="flex min-h-screen items-center justify-center bg-soft p-6">
+        <div class="contact-container rounded-2xl border border-line bg-surface p-12 shadow-lg">
+            <h2 class="mb-2 text-center text-4xl font-bold text-fg">{{ t('contactPage.title') }}</h2>
+            <p class="mb-6 text-center text-muted">{{ t('contactPage.subtitle') }}</p>
 
-            <div class="d-flex flex-column gap-3">
+            <div class="flex flex-col gap-4">
                 <!-- Email -->
                 <a :href="`mailto:${contact.email}`"
-                    class="contact-link email-link d-flex align-items-center p-4 text-white text-decoration-none rounded-3">
-                    <div class="icon-circle bg-white bg-opacity-25 p-3 rounded-circle me-3">
-                        <i class="bi bi-envelope-fill fs-4"></i>
+                    class="contact-link email-link flex items-center rounded-lg p-6 text-white no-underline">
+                    <div class="icon-circle mr-4 flex items-center justify-center rounded-full bg-white/25">
+                        <i class="bi bi-envelope-fill text-xl"></i>
                     </div>
                     <div>
-                        <div class="fw-semibold">Email</div>
-                        <div class="small opacity-75">{{ contact.email }}</div>
+                        <div class="font-semibold">Email</div>
+                        <div class="text-sm opacity-75">{{ contact.email }}</div>
                     </div>
                 </a>
 
                 <!-- LinkedIn -->
                 <a :href="contact.linkedin" target="_blank" rel="noopener noreferrer"
-                    class="contact-link linkedin-link d-flex align-items-center p-4 text-white text-decoration-none rounded-3">
-                    <div class="icon-circle bg-white bg-opacity-25 p-3 rounded-circle me-3">
-                        <i class="bi bi-linkedin fs-4"></i>
+                    class="contact-link linkedin-link flex items-center rounded-lg p-6 text-white no-underline">
+                    <div class="icon-circle mr-4 flex items-center justify-center rounded-full bg-white/25">
+                        <i class="bi bi-linkedin text-xl"></i>
                     </div>
                     <div>
-                        <div class="fw-semibold">LinkedIn</div>
-                        <div class="small opacity-75">Professional Profile</div>
+                        <div class="font-semibold">LinkedIn</div>
+                        <div class="text-sm opacity-75">{{ t('contactPage.linkedinSub') }}</div>
                     </div>
                 </a>
 
                 <!-- GitHub -->
                 <a :href="contact.github" target="_blank" rel="noopener noreferrer"
-                    class="contact-link github-link d-flex align-items-center p-4 text-white text-decoration-none rounded-3">
-                    <div class="icon-circle bg-white bg-opacity-25 p-3 rounded-circle me-3">
-                        <i class="bi bi-github fs-4"></i>
+                    class="contact-link github-link flex items-center rounded-lg p-6 text-white no-underline">
+                    <div class="icon-circle mr-4 flex items-center justify-center rounded-full bg-white/25">
+                        <i class="bi bi-github text-xl"></i>
                     </div>
                     <div>
-                        <div class="fw-semibold">GitHub</div>
-                        <div class="small opacity-75">View My Projects</div>
+                        <div class="font-semibold">GitHub</div>
+                        <div class="text-sm opacity-75">{{ t('contactPage.githubSub') }}</div>
                     </div>
                 </a>
             </div>
 
-            <div class="mt-4 text-center">
-                <p class="text-muted small mb-0">Looking forward to connecting with you!</p>
+            <div class="mt-6 text-center">
+                <p class="text-sm text-muted">{{ t('contactPage.footer') }}</p>
             </div>
         </div>
     </div>
@@ -51,6 +51,8 @@
 
 <script setup lang="ts">
 import { reactive } from 'vue';
+import { useI18n } from 'vue-i18n';
+const { t } = useI18n();
 
 const contact = reactive({
     email: 'danidevhdez@gmail.com',
@@ -59,9 +61,7 @@ const contact = reactive({
 });
 </script>
 
-<style scoped lang="scss">
-@use "../assets/custom.scss" as custom;
-
+<style scoped>
 .contact-container {
     max-width: 28rem;
     width: 100%;
@@ -91,8 +91,5 @@ const contact = reactive({
 .icon-circle {
     width: 50px;
     height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 </style>

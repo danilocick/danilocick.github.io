@@ -1,56 +1,57 @@
 <template>
-    <div class="card border-0 shadow-sm h-100">
-        <div class="card-body">
-            <div class="d-flex align-items-start mb-3">
-                <div class="flex-grow-1">
-                    <h5 class="card-title mb-1">{{ character.name }}</h5>
-                    <p class="text-muted small mb-0">{{ character.job || 'Unknown' }}</p>
-                </div>
-                <span v-if="character.status === 'alive'" class="badge bg-success">
-                    <i class="bi bi-heart-fill"></i> Vivo
-                </span>
-                <span v-else-if="character.status === 'deceased'" class="badge bg-secondary">
-                    <i class="bi bi-x-circle-fill"></i> Fallecido
-                </span>
+    <BaseCard class="op-card h-full p-4">
+        <div class="mb-4 flex items-start">
+            <div class="flex-1">
+                <h5 class="mb-1 text-lg font-semibold">{{ character.name }}</h5>
+                <p class="text-sm text-muted">{{ character.job || t('onepiece.unknown') }}</p>
             </div>
-
-            <div class="mb-3">
-                <div class="d-flex justify-content-between align-items-center mb-2">
-                    <span class="small text-muted">Recompensa:</span>
-                    <span class="badge bg-warning text-dark">{{ store.formatBounty(character.bounty) }}</span>
-                </div>
-                <div class="progress" style="height: 6px;">
-                    <div class="progress-bar bg-warning"
-                        :style="{ width: `${store.calculateBountyPercentage(character.bounty)}%` }"></div>
-                </div>
-            </div>
-
-            <div class="d-flex gap-1 flex-wrap mb-2">
-                <span v-if="character.crew" class="badge bg-primary">
-                    <i class="bi bi-flag-fill me-1"></i>{{ character.crew.name }}
-                </span>
-                <span v-if="character.fruit" class="badge bg-danger">
-                    <i class="bi bi-apple me-1"></i>{{ character.fruit.name }}
-                </span>
-            </div>
-
-            <span v-if="character.is_captain" class="badge bg-dark">
-                <i class="bi bi-person-badge"></i> Capitán
-            </span>
+            <BaseBadge v-if="character.status === 'alive'" variant="success">
+                <i class="bi bi-heart-fill"></i> {{ t('onepiece.alive') }}
+            </BaseBadge>
+            <BaseBadge v-else-if="character.status === 'deceased'" variant="secondary">
+                <i class="bi bi-x-circle-fill"></i> {{ t('onepiece.deceased') }}
+            </BaseBadge>
         </div>
-    </div>
+
+        <div class="mb-4">
+            <div class="mb-2 flex items-center justify-between">
+                <span class="text-sm text-muted">{{ t('onepiece.bounty') }}</span>
+                <BaseBadge variant="warning">{{ store.formatBounty(character.bounty) }}</BaseBadge>
+            </div>
+            <div class="h-1.5 w-full overflow-hidden rounded bg-gray-200 dark:bg-gray-700">
+                <div class="progress-bar h-full bg-warning"
+                    :style="{ width: `${store.calculateBountyPercentage(character.bounty)}%` }"></div>
+            </div>
+        </div>
+
+        <div class="mb-2 flex flex-wrap gap-1">
+            <BaseBadge v-if="character.crew" variant="primary">
+                <i class="bi bi-flag-fill"></i>{{ character.crew.name }}
+            </BaseBadge>
+            <BaseBadge v-if="character.fruit" variant="accent">
+                <i class="bi bi-apple"></i>{{ character.fruit.name }}
+            </BaseBadge>
+        </div>
+
+        <BaseBadge v-if="character.is_captain" variant="dark">
+            <i class="bi bi-person-badge"></i> {{ t('onepiece.captain') }}
+        </BaseBadge>
+    </BaseCard>
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import { useOnePieceStore } from '@/stores/onePiece'
 import type { Character } from '@/stores/onePiece'
+import { BaseCard, BaseBadge } from '@/components/ui'
 
+const { t } = useI18n()
 defineProps<{ character: Character }>()
 const store = useOnePieceStore()
 </script>
 
 <style scoped>
-.card { transition: transform 0.2s; }
-.card:hover { transform: translateY(-5px); }
+.op-card { transition: transform 0.2s; }
+.op-card:hover { transform: translateY(-5px); }
 .progress-bar { transition: width 0.3s ease; }
 </style>

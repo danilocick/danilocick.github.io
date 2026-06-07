@@ -3,7 +3,11 @@
     "allow": [
       "Bash(grep -E \"\\\\.\\(ts|js|vue|json\\)$\")",
       "Bash(npm run *)",
-      "mcp__Claude_Preview__preview_start"
+      "mcp__Claude_Preview__preview_start",
+      "Bash(npx vite *)",
+      "Bash(npm --version)",
+      "Bash(npm install *)",
+      "Bash(npm uninstall *)"
     ]
   }
 }

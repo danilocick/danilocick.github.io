@@ -1,0 +1,147 @@
+@import 'tailwindcss';
+
+/* Class-based dark mode (toggled on <html class="dark">) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ============================================
+   THEME TOKENS
+   ============================================ */
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Brand palette */
+  --color-primary: #667eea;
+  --color-secondary: #764ba2;
+  --color-accent: #06b6d4;
+  --color-success: #28a745;
+  --color-info: #17a2b8;
+  --color-warning: #ffc107;
+  --color-danger: #dc3545;
+
+  /* Semantic tokens (resolve to the CSS vars below — adapt to light/dark) */
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-soft: var(--soft);
+  --color-line: var(--line);
+}
+
+/* Light theme — three elevation levels: bg < soft < surface */
+:root {
+  --bg: #f6f7f9;
+  --soft: #eef0f4;
+  --surface: #ffffff;
+  --fg: #1f2430;
+  --muted: #6b7280;
+  --line: rgb(15 23 42 / 0.08);
+}
+
+/* Dark theme — three distinct elevation levels: bg < soft < surface */
+.dark {
+  --bg: #121419;
+  --soft: #1a1d24;
+  --surface: #232834;
+  --fg: #e9ecef;
+  --muted: #98a2b3;
+  --line: rgb(255 255 255 / 0.09);
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--bg);
+    color: var(--fg);
+  }
+
+  /* Visible keyboard focus everywhere */
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  h1, h2, h3 {
+    letter-spacing: -0.02em;
+  }
+
+  /* Respect users who prefer reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+    .reveal {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+}
+
+/* ============================================
+   COMPONENT PRIMITIVES
+   ============================================ */
+@layer components {
+  /* Surface card with definition in both themes */
+  .card {
+    @apply rounded-xl border border-line bg-surface shadow-sm;
+  }
+
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40;
+  }
+  .btn-sm { @apply px-3 py-1.5 text-sm; }
+  .btn-lg { @apply px-6 py-3 text-lg; }
+
+  .btn-primary { @apply bg-primary text-white hover:bg-primary/90; }
+  .btn-outline-primary { @apply border border-primary text-primary hover:bg-primary hover:text-white; }
+  .btn-outline-secondary { @apply border border-secondary text-secondary hover:bg-secondary hover:text-white; }
+  .btn-light { @apply bg-white text-gray-900 hover:bg-gray-100; }
+  .btn-outline-light { @apply border border-white text-white hover:bg-white hover:text-gray-900; }
+
+  /* Badges */
+  .badge {
+    @apply inline-flex items-center gap-1 rounded px-2 py-1 text-xs font-semibold;
+  }
+  .badge-primary { @apply bg-primary text-white; }
+  .badge-secondary { @apply bg-secondary text-white; }
+  .badge-accent { @apply bg-accent text-white; }
+  .badge-success { @apply bg-success text-white; }
+  .badge-info { @apply bg-info text-white; }
+  .badge-warning { @apply bg-warning text-gray-900; }
+  .badge-danger { @apply bg-danger text-white; }
+  .badge-dark { @apply bg-gray-800 text-white; }
+  .badge-soft { @apply bg-soft text-fg; }
+
+  /* Section eyebrow / kicker */
+  .kicker {
+    @apply mb-3 inline-block text-sm font-semibold uppercase tracking-widest text-primary;
+  }
+}
+
+/* ============================================
+   UTILITIES
+   ============================================ */
+@layer utilities {
+  .bg-brand-gradient {
+    background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+
+  /* Scroll reveal animations */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+}

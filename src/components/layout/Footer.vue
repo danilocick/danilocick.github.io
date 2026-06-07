@@ -1,23 +1,22 @@
 <template>
-    <footer class="text-center bg-dark text-white mt-4">
-        <div class="container py-2">
-            <div class="d-flex justify-content-center text-white">
-                <a v-for="value in socialLinks" :href="value.url" class="mx-2 text-white" :aria-label="value.label"
-                    target="_blank" rel="noopener" :id="value.label.toLowerCase() + '-link'">
-                    <i :class="`bi bi-${value.icon.toLowerCase()} text-white`" style="font-size: 1.5rem;"></i>
+    <footer class="mt-6 bg-gray-900 text-center text-white">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-center">
+                <a v-for="value in socialLinks" :key="value.label" :href="value.url"
+                    class="mx-2 text-white transition hover:opacity-75" :aria-label="value.label"
+                    :title="t('footer.visit', { name: value.label })" target="_blank" rel="noopener">
+                    <i :class="`bi bi-${value.icon.toLowerCase()}`" class="text-2xl"></i>
                 </a>
             </div>
-            <hr />
-            <span class="text-white">© {{ currentYear }} Daniel Hernández Martín</span>
+            <hr class="my-3 border-white/20" />
+            <span>© {{ currentYear }} Daniel Hernández Martín</span>
         </div>
-        <BTooltip v-for="value in socialLinks" :target="value.label.toLowerCase() + '-link'" placement="top">
-            Visit {{ value.label }}
-        </BTooltip>
     </footer>
 </template>
 
 <script setup lang="ts">
-import { BTooltip } from 'bootstrap-vue-next';
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 const currentYear = new Date().getFullYear()
 
 const socialLinks = [
@@ -26,6 +25,3 @@ const socialLinks = [
     { icon: 'envelope', url: 'mailto:danidevhdez@gmail.com', label: 'Email' }
 ]
 </script>
-
-
-<style scoped></style>

@@ -5,7 +5,7 @@ export const useThemeStore = defineStore('theme', () => {
     const dark = ref(localStorage.getItem('theme') === 'dark')
 
     function apply() {
-        document.documentElement.setAttribute('data-bs-theme', dark.value ? 'dark' : 'light')
+        document.documentElement.classList.toggle('dark', dark.value)
         localStorage.setItem('theme', dark.value ? 'dark' : 'light')
     }
 

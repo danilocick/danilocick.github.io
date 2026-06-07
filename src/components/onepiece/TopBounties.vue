@@ -1,31 +1,30 @@
 <template>
-    <div class="card border-0 shadow-sm mb-4">
-        <div class="card-header bg-warning bg-opacity-10 border-0">
-            <h5 class="mb-0">
-                <i class="bi bi-trophy-fill text-warning me-2"></i>Top 10 Recompensas Más Altas
+    <BaseCard class="mb-6 overflow-hidden">
+        <div class="bg-warning/10 p-4">
+            <h5 class="text-lg font-semibold">
+                <i class="bi bi-trophy-fill mr-2 text-warning"></i>{{ t('onepiece.topTitle') }}
             </h5>
         </div>
-        <div class="card-body">
-            <div class="row g-2">
-                <div v-for="(char, index) in store.topBounties" :key="char.id" class="col-12">
-                    <div class="d-flex align-items-center">
-                        <div class="me-3">
-                            <span class="badge rounded-circle"
-                                :class="index < 3 ? 'bg-warning text-dark' : 'bg-secondary'"
-                                style="width:30px;height:30px;display:flex;align-items:center;justify-content:center;">
+        <div class="p-6">
+            <div class="flex flex-col gap-2">
+                <div v-for="(char, index) in store.topBounties" :key="char.id">
+                    <div class="flex items-center">
+                        <div class="mr-4">
+                            <span class="flex h-8 w-8 items-center justify-center rounded-full text-xs font-semibold"
+                                :class="index < 3 ? 'bg-warning text-gray-900' : 'bg-secondary text-white'">
                                 {{ index + 1 }}
                             </span>
                         </div>
-                        <div class="flex-grow-1">
-                            <div class="d-flex justify-content-between align-items-center mb-1">
+                        <div class="flex-1">
+                            <div class="mb-1 flex items-center justify-between">
                                 <div>
                                     <strong>{{ char.name }}</strong>
-                                    <small class="text-muted ms-2">{{ char.job }}</small>
+                                    <small class="ml-2 text-sm text-muted">{{ char.job }}</small>
                                 </div>
-                                <span class="badge bg-warning text-dark">{{ store.formatBounty(char.bounty) }}</span>
+                                <BaseBadge variant="warning">{{ store.formatBounty(char.bounty) }}</BaseBadge>
                             </div>
-                            <div class="progress" style="height:8px;">
-                                <div class="progress-bar bg-warning"
+                            <div class="h-2 w-full overflow-hidden rounded bg-gray-200 dark:bg-gray-700">
+                                <div class="h-full bg-warning"
                                     :style="{ width: `${(parseFloat(char.bounty) / parseFloat(store.topBounties[0].bounty)) * 100}%` }">
                                 </div>
                             </div>
@@ -34,10 +33,13 @@
                 </div>
             </div>
         </div>
-    </div>
+    </BaseCard>
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import { useOnePieceStore } from '@/stores/onePiece'
+import { BaseCard, BaseBadge } from '@/components/ui'
+const { t } = useI18n()
 const store = useOnePieceStore()
 </script>
