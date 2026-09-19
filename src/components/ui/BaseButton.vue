@@ -17,8 +17,9 @@ const props = withDefaults(
         pill?: boolean
         to?: string
         href?: string
+        type?: 'button' | 'submit' | 'reset'
     }>(),
-    { variant: 'primary', size: 'md', pill: false },
+    { variant: 'primary', size: 'md', pill: false, type: 'button' },
 )
 
 const tag = computed(() => (props.to ? RouterLink : props.href ? 'a' : 'button'))
@@ -36,7 +37,7 @@ const classes = computed(() => [
         :is="tag"
         :to="to"
         :href="href"
-        :type="tag === 'button' ? 'button' : undefined"
+        :type="tag === 'button' ? type : undefined"
         :class="classes"
     >
         <slot />

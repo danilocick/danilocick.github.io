@@ -4,6 +4,7 @@ import ContactView from '@/views/ContactView.vue'
 import ProjectsView from '@/views/ProjectsView.vue'
 import DocumentationView from '@/views/DocumentationView.vue'
 import OnePieceApi from '@/views/OnePieceView.vue'
+import RecipesView from '@/views/RecipesView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
 
 const router = createRouter({
@@ -33,6 +34,11 @@ const router = createRouter({
       path: '/onepiece',
       name: 'onepiece',
       component: OnePieceApi,
+    },
+    {
+      path: '/recetario',
+      name: 'recetario',
+      component: RecipesView,
     },
     {
       path: '/:pathMatch(.*)*',

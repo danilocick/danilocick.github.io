@@ -16,8 +16,12 @@
                     <p class="mb-3">{{ t('about.whoBody') }}</p>
                     <p class="text-sm text-muted">{{ t('about.whoNote') }}</p>
                     <div class="mt-4 flex flex-wrap gap-2">
-                        <span class="rounded bg-primary/10 px-2 py-1 text-xs font-semibold text-primary">{{ t('hero.location') }}</span>
-                        <span class="rounded bg-success/10 px-2 py-1 text-xs font-semibold text-success">{{ t('about.badgeJob') }}</span>
+                        <span class="rounded bg-primary/10 px-2 py-1 text-xs font-semibold text-primary">{{
+                            t('hero.location') }}</span>
+                        <span class="rounded bg-success/10 px-2 py-1 text-xs font-semibold text-success">{{
+                            t('about.badgeJob') }}</span>
+                        <span class="rounded bg-success/10 px-2 py-1 text-xs font-semibold text-success">{{
+                            t('about.badgeJob2') }}</span>
                     </div>
                 </BaseCard>
 

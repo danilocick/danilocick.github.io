@@ -5,23 +5,31 @@
 
                 <!-- Text -->
                 <div class="text-center lg:col-span-7 lg:text-left">
-                    <h1 class="mb-4 text-5xl font-bold md:text-6xl">{{ t('hero.greeting') }}</h1>
-                    <p class="mx-auto mb-2 max-w-2xl text-xl md:text-2xl lg:mx-0">
-                        {{ t('hero.role') }}
+                    <p class="mb-3 text-sm font-semibold uppercase tracking-widest opacity-80">{{ t('hero.eyebrow') }}
                     </p>
-                    <p class="mb-6 text-lg opacity-75">{{ t('hero.stack') }}</p>
+                    <h1 class="mx-auto mb-4 max-w-2xl text-4xl font-bold leading-tight md:text-5xl lg:mx-0 lg:text-6xl">
+                        {{ t('hero.headline') }}
+                    </h1>
+                    <p class="mx-auto mb-6 max-w-2xl text-lg opacity-90 lg:mx-0">{{ t('hero.sub') }}</p>
 
-                    <div class="mb-12 flex flex-wrap justify-center gap-4 lg:justify-start">
-                        <BaseButton href="#proyectos" variant="light" size="lg">
+                    <!-- Stack como prueba, no como titular -->
+                    <div class="mb-8 flex flex-wrap justify-center gap-2 lg:justify-start">
+                        <span v-for="tech in stackChips" :key="tech"
+                            class="rounded-full bg-white/15 px-3 py-1 text-sm ring-1 ring-white/20">{{ tech }}</span>
+                    </div>
+
+                    <div class="mb-4 flex flex-wrap justify-center gap-4 lg:justify-start">
+                        <BaseButton href="#contacto" variant="light" size="lg">
+                            <i class="bi bi-chat-dots"></i>{{ t('hero.ctaContact') }}
+                        </BaseButton>
+                        <BaseButton href="#proyectos" variant="outline-light" size="lg">
                             <i class="bi bi-grid-3x3-gap"></i>{{ t('hero.ctaProjects') }}
                         </BaseButton>
-                        <BaseButton href="#contacto" variant="outline-light" size="lg">
-                            <i class="bi bi-envelope"></i>{{ t('hero.ctaContact') }}
-                        </BaseButton>
-                        <BaseButton href="/cv.pdf" download variant="outline-light" size="lg">
-                            <i class="bi bi-file-earmark-arrow-down"></i>{{ t('hero.ctaCv') }}
-                        </BaseButton>
                     </div>
+                    <a href="/cv.pdf" download
+                        class="mb-12 inline-flex items-center gap-1 text-sm underline underline-offset-4 opacity-90 transition hover:opacity-100">
+                        <i class="bi bi-download"></i>{{ t('hero.ctaCv') }}
+                    </a>
 
                     <!-- Metrics -->
                     <div class="flex flex-wrap justify-center gap-6 lg:justify-start">
@@ -41,9 +49,11 @@
                         <span class="rounded-full bg-white/20 px-3 py-1 text-sm ring-1 ring-white/30">
                             <i class="bi bi-geo-alt mr-1"></i>{{ t('hero.location') }}
                         </span>
-                        <span class="inline-flex items-center gap-2 rounded-full bg-white/20 px-3 py-1 text-sm ring-1 ring-white/30">
+                        <span
+                            class="inline-flex items-center gap-2 rounded-full bg-white/20 px-3 py-1 text-sm ring-1 ring-white/30">
                             <span class="relative flex h-2 w-2">
-                                <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
+                                <span
+                                    class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
                                 <span class="relative inline-flex h-2 w-2 rounded-full bg-green-400"></span>
                             </span>
                             {{ t('hero.available') }}
@@ -56,21 +66,26 @@
         <!-- Wave divider -->
         <div class="hero-wave">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 60" preserveAspectRatio="none">
-                <path fill="var(--bg, #fff)" d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z"/>
+                <path fill="var(--bg, #fff)" d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" />
             </svg>
         </div>
     </section>
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { BaseButton } from '@/components/ui'
 const { t } = useI18n()
 
+const stackChips = computed(() =>
+    t('hero.stack').split('·').map((s) => s.trim()).filter(Boolean),
+)
+
 const metrics = [
-    { value: '3+', label: 'hero.metricYears' },
-    { value: '10+', label: 'hero.metricApps' },
-    { value: '2', label: 'hero.metricStacks' },
+    { value: '5+', label: 'hero.metricYears' },
+    { value: '30+', label: 'hero.metricApps' },
+    { value: '3', label: 'hero.metricStacks' },
 ]
 </script>
 
