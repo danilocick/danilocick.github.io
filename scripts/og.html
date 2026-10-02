@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1200">
+<meta name="robots" content="noindex">
+<title>og image</title>
+<!--
+  Open Graph image template, 1200×630 (spec §5, §6.8; ADAPTATIONS E, H).
+  scripts/og.mjs screenshots it into public/img/og-es.png, og-ca.png and og-en.png:
+
+    npm run og                      render the three images
+    node scripts/og.mjs --serve     serve this page to look at it in a browser (#es, #ca, #en)
+
+  The locale comes from the hash. The copy comes from src/portfolio/i18n/locales/<locale>.json
+  (only the keys listed in #og-keys) and the fonts from public/fonts/, so the page must be
+  served over HTTP: opened from file:// it shows an error instead.
+  Light theme, §2 tokens. The image is the hero after the switch has turned to AUTOMÁTICO:
+  the dial logo and wordmark, the H1 with "a mano" struck, the byline role, and the chore card
+  with its chores crossed out and ticked. Motifs: dial, hand-drawn checkbox, marker strike,
+  cuadrícula (inside the list only). No vermilion fill: there is no button here.
+-->
+<link rel="preload" href="../public/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../public/fonts/atkinson.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  @font-face {
+    font-family: "Archivo";
+    font-style: normal;
+    font-weight: 100 900;
+    font-stretch: 62% 125%;
+    font-display: block;
+    src: url(../public/fonts/archivo.woff2) format("woff2");
+  }
+  @font-face {
+    font-family: "Atkinson Hyperlegible Next";
+    font-style: normal;
+    font-weight: 200 800;
+    font-display: block;
+    src: url(../public/fonts/atkinson.woff2) format("woff2");
+  }
+
+  :root {
+    color-scheme: light;
+    --bg: #f3f2ee;
+    --surface: #fbfaf7;
+    --ink: #15140f;
+    --muted: #57544b;
+    --line: #d7d4cb;
+    --accent-ink: #b5330d;
+    --strike-img: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12' preserveAspectRatio='none'%3E%3Cpath d='M2 7.2C28 4.6 52 8.8 84 6.4S150 4.2 198 6.8' fill='none' stroke='%23B5330D' stroke-width='3.4' stroke-linecap='round'/%3E%3C/svg%3E");
+    --display: "Archivo", "Arial Black", sans-serif;
+    --sans: "Atkinson Hyperlegible Next", Arial, sans-serif;
+    --pad-x: 72px;
+    --pad-y: 64px;
+    --chore: 20px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 400;
+    line-height: 1.35;
+    font-synthesis: none;
+    font-variant-numeric: lining-nums tabular-nums;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: geometricPrecision;
+  }
+
+  .og {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 404px;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    column-gap: 56px;
+    width: 1200px;
+    height: 630px;
+    padding: var(--pad-y) var(--pad-x);
+  }
+
+  /* Dial (DialGlyph geometry, viewBox 56): ring + bar handle + tip dot, AUTOMÁTICO = +45° */
+  .dial-glyph { display: block; flex: none; overflow: visible; color: var(--ink); }
+  .dial-glyph circle.ring, .dial-glyph rect {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: var(--stroke, 2px);
+    vector-effect: non-scaling-stroke;
+  }
+  .dial-glyph .tip { fill: currentColor; }
+
+  .brand { grid-column: 1; grid-row: 1; display: flex; align-items: center; gap: 14px; }
+  .brand .dial-glyph { width: 40px; height: 40px; --stroke: 2.25px; }
+  .wordmark {
+    font-family: var(--display);
+    font-weight: 800;
+    font-stretch: 112%;
+    font-size: 28px;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+  }
+
+  .lead { grid-column: 1; grid-row: 2; align-self: center; }
+  h1 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-stretch: 112%;
+    font-size: 72px; /* fitted by the script: largest size ≤ 72px with ≤ 3 lines */
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+    padding-block: 8px;
+  }
+  /* §7A: "a mano" + the marker strike, drawn (AUTOMÁTICO); the struck words stay ink */
+  .h1-manual { position: relative; white-space: nowrap; }
+  .h1-manual svg {
+    position: absolute;
+    left: -0.06em;
+    width: calc(100% + 0.12em);
+    top: 50%;
+    height: 0.32em;
+    overflow: visible;
+  }
+  .h1-manual path {
+    fill: none;
+    stroke: var(--accent-ink);
+    stroke-width: max(3.5px, 0.08em);
+    stroke-linecap: round;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .role {
+    margin-top: 28px;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1.3;
+    text-wrap: balance;
+  }
+
+  /* The chore card (§6.2), every chore done */
+  .card {
+    grid-column: 2;
+    grid-row: 1 / 4;
+    align-self: center;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 24px;
+  }
+  .dial-row { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+  .dial-row .dial-glyph { width: 52px; height: 52px; --stroke: 2px; }
+  .label {
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 1.3;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .label.is-on { color: var(--ink); display: inline-flex; align-items: center; gap: 8px; }
+  .lamp {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent-ink);
+    border: 1.5px solid var(--accent-ink);
+  }
+
+  .paper {
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 5mm 5mm;
+  }
+  .chores { list-style: none; padding: 14px 16px; border-radius: 2px; }
+  .chores li > span { text-wrap: balance; }
+  .chores li {
+    display: grid;
+    grid-template-columns: 24px minmax(0, 1fr);
+    column-gap: 12px;
+    row-gap: 4px;
+    font-weight: 700;
+    font-size: var(--chore);
+    line-height: 1.33;
+  }
+  .chores li + li { margin-top: 16px; }
+  .mbox { width: 24px; height: 24px; overflow: visible; margin-top: calc((var(--chore) * 1.33 - 24px) / 2); }
+  .mbox .box { fill: none; stroke: var(--ink); stroke-width: 1.5px; vector-effect: non-scaling-stroke; }
+  .mbox .tick {
+    fill: none;
+    stroke: var(--accent-ink);
+    stroke-width: 2.5px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+  }
+  .strike {
+    color: var(--muted);
+    background: var(--strike-img) no-repeat 0 58% / 100% 0.42em;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    overflow-wrap: anywhere;
+  }
+  .note { grid-column: 2; color: var(--ink); font-size: calc(var(--chore) - 1px); }
+
+  .error {
+    position: fixed;
+    inset: 24px;
+    padding: 24px;
+    background: var(--surface);
+    border: 3px solid var(--accent-ink);
+    font: 700 22px/1.4 var(--sans);
+    white-space: pre-wrap;
+  }
+  .error[hidden] { display: none; }
+</style>
+</head>
+<body>
+<main class="og">
+  <div class="brand">
+    <svg class="dial-glyph" viewBox="0 0 56 56" aria-hidden="true" focusable="false">
+      <circle class="ring" cx="28" cy="28" r="24"/>
+      <g transform="rotate(45 28 28)"><rect x="24.5" y="8" width="7" height="40" rx="3.5"/><circle class="tip" cx="28" cy="13" r="1.6"/></g>
+    </svg>
+    <span class="wordmark" data-k="header.wordmark"></span>
+  </div>
+
+  <div class="lead">
+    <h1 id="h1"></h1>
+    <p class="role" data-k="hero.byline.role"></p>
+  </div>
+
+  <figure class="card">
+    <div class="dial-row">
+      <span class="label" data-k="chores.man"></span>
+      <svg class="dial-glyph" viewBox="0 0 56 56" aria-hidden="true" focusable="false">
+        <circle class="ring" cx="28" cy="28" r="24"/>
+        <g transform="rotate(45 28 28)"><rect x="24.5" y="8" width="7" height="40" rx="3.5"/><circle class="tip" cx="28" cy="13" r="1.6"/></g>
+      </svg>
+      <span class="label is-on"><span data-k="chores.auto"></span><span class="lamp"></span></span>
+    </div>
+    <ol class="chores paper">
+      <li>
+        <svg class="mbox" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path class="box" d="M1.6 2.1C8.4 1.5 15.6 1.4 22.3 1.8C22.8 8.5 22.7 15.2 22.4 21.9C15.5 22.4 8.6 22.4 1.7 22.1C1.2 15.4 1.1 8.7 1.6 2.1Z"/><path class="tick" d="M5.5 12.4C7.2 13.9 8.8 15.7 10.1 17.7C13.1 11.8 17.7 6.1 24.5 0.5"/></svg>
+        <span><span class="strike" data-k="chores.items.pedidos.text"></span></span>
+        <span class="note" data-k="chores.items.pedidos.note"></span>
+      </li>
+      <li>
+        <svg class="mbox" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path class="box" d="M1.6 2.1C8.4 1.5 15.6 1.4 22.3 1.8C22.8 8.5 22.7 15.2 22.4 21.9C15.5 22.4 8.6 22.4 1.7 22.1C1.2 15.4 1.1 8.7 1.6 2.1Z"/><path class="tick" d="M5.5 12.4C7.2 13.9 8.8 15.7 10.1 17.7C13.1 11.8 17.7 6.1 24.5 0.5"/></svg>
+        <span><span class="strike" data-k="chores.items.informe.text"></span></span>
+        <span class="note" data-k="chores.items.informe.note"></span>
+      </li>
+      <li>
+        <svg class="mbox" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path class="box" d="M1.6 2.1C8.4 1.5 15.6 1.4 22.3 1.8C22.8 8.5 22.7 15.2 22.4 21.9C15.5 22.4 8.6 22.4 1.7 22.1C1.2 15.4 1.1 8.7 1.6 2.1Z"/><path class="tick" d="M5.5 12.4C7.2 13.9 8.8 15.7 10.1 17.7C13.1 11.8 17.7 6.1 24.5 0.5"/></svg>
+        <span><span class="strike" data-k="chores.items.copiar.text"></span></span>
+        <span class="note" data-k="chores.items.copiar.note"></span>
+      </li>
+    </ol>
+  </figure>
+</main>
+
+<p class="error" id="error" hidden></p>
+
+<template id="h1-manual"><span class="h1-manual"><svg viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path pathLength="1" d="M2 7.2C28 4.6 52 8.8 84 6.4S150 4.2 198 6.8"/></svg></span></template>
+
+<!-- Every message key this page renders. scripts/checks.mjs hashes these messages + this file
+     to tell when an og image is out of date, so keep the list exact. -->
+<script type="application/json" id="og-keys">
+["header.wordmark", "hero.h1", "hero.h1Manual", "hero.byline.role", "chores.man", "chores.auto",
+ "chores.items.pedidos.text", "chores.items.pedidos.note", "chores.items.informe.text", "chores.items.informe.note",
+ "chores.items.copiar.text", "chores.items.copiar.note"]
+</script>
+
+<script>
+  (function () {
+    var LOCALES = ['es', 'ca', 'en']
+    var W = 1200
+    var H = 630
+    var requested = location.hash.slice(1)
+    var locale = LOCALES.indexOf(requested) >= 0 ? requested : 'es'
+    document.documentElement.lang = locale
+    var keys = JSON.parse(document.getElementById('og-keys').textContent)
+
+    function nextFrames(n) {
+      return new Promise(function (resolve) {
+        ;(function step() { n-- > 0 ? requestAnimationFrame(step) : resolve() })()
+      })
+    }
+
+    function finish(problems, details) {
+      var ok = problems.length === 0
+      document.documentElement.setAttribute('data-og', ok ? 'ok' : 'error')
+      var box = document.getElementById('error')
+      box.hidden = ok
+      box.textContent = ok ? '' : 'og.html (' + locale + '):\n' + problems.join('\n')
+      return Object.assign({ ok: ok, locale: locale, problems: problems }, details || {})
+    }
+
+    function lineCount(el) {
+      return Math.round(el.getBoundingClientRect().height / parseFloat(getComputedStyle(el).lineHeight))
+    }
+
+    // Largest size ≤ 72px at which the H1 takes at most 3 lines without overflowing its column.
+    function fitH1(h1) {
+      var pad = 16
+      for (var size = 72; size >= 48; size--) {
+        h1.style.fontSize = size + 'px'
+        var lines = Math.round((h1.getBoundingClientRect().height - pad) / (size * 1.02))
+        if (lines <= 3 && h1.scrollWidth <= h1.clientWidth) return { ok: true, size: size, lines: lines }
+      }
+      return { ok: false, size: 48, lines: lineCount(h1) }
+    }
+
+    // Shrink the chores until the card fits between the paddings.
+    function fitCard(card) {
+      var room = H - 2 * 64
+      for (var size = 20; size >= 16; size--) {
+        document.documentElement.style.setProperty('--chore', size + 'px')
+        if (card.getBoundingClientRect().height <= room) return { ok: true, size: size }
+      }
+      return { ok: false, size: 16 }
+    }
+
+    window.ogReady = (async function () {
+      var problems = []
+      var messages
+      try {
+        var res = await fetch('../src/portfolio/i18n/locales/' + locale + '.json', { cache: 'no-store' })
+        if (!res.ok) throw new Error('HTTP ' + res.status)
+        messages = await res.json()
+      } catch (e) {
+        return finish(['Cannot load ' + locale + '.json (' + e.message + ').', 'Serve this page with: node scripts/og.mjs --serve'])
+      }
+
+      var used = {}
+      function t(key) {
+        used[key] = true
+        if (keys.indexOf(key) < 0) problems.push(key + ' is rendered but not listed in #og-keys')
+        var value = key.split('.').reduce(function (o, k) { return o && typeof o === 'object' ? o[k] : undefined }, messages)
+        if (typeof value !== 'string' || !value.trim()) {
+          problems.push('missing message ' + key)
+          return ''
+        }
+        return value
+      }
+
+      document.querySelectorAll('[data-k]').forEach(function (el) { el.textContent = t(el.getAttribute('data-k')) })
+
+      // H1: "Lo que hoy hacéis {manual}, en automático." with {manual} = struck "a mano"
+      var h1 = document.getElementById('h1')
+      var text = t('hero.h1')
+      var manual = document.getElementById('h1-manual').content.firstElementChild.cloneNode(true)
+      manual.prepend(t('hero.h1Manual'))
+      var at = text.indexOf('{manual}')
+      if (at < 0) {
+        problems.push('hero.h1 has no {manual} placeholder')
+        h1.textContent = text
+      } else {
+        h1.replaceChildren(text.slice(0, at), manual, text.slice(at + '{manual}'.length))
+      }
+      keys.forEach(function (k) { if (!used[k]) problems.push(k + ' is listed in #og-keys but not rendered') })
+
+      try {
+        await Promise.all([
+          document.fonts.load('800 72px Archivo', h1.textContent),
+          document.fonts.load('700 20px "Atkinson Hyperlegible Next"'),
+        ])
+      } catch (e) {
+        // reported below
+      }
+      await document.fonts.ready
+      ;['Archivo', 'Atkinson Hyperlegible Next'].forEach(function (family) {
+        var loaded = Array.from(document.fonts).some(function (f) {
+          return f.family.replace(/["']/g, '') === family && f.status === 'loaded'
+        })
+        if (!loaded) problems.push('font "' + family + '" did not load (public/fonts/)')
+      })
+
+      var h1Fit = fitH1(h1)
+      if (!h1Fit.ok) problems.push('hero.h1 needs more than 3 lines even at ' + h1Fit.size + 'px')
+      var cardFit = fitCard(document.querySelector('.card'))
+      if (!cardFit.ok) problems.push('the chore card is taller than the image')
+      var doc = document.documentElement
+      if (doc.scrollWidth > W || doc.scrollHeight > H) problems.push('the layout overflows ' + W + '×' + H)
+      document.querySelectorAll('.og > *').forEach(function (el) {
+        var r = el.getBoundingClientRect()
+        if (r.left < 32 || r.top < 32 || r.right > W - 32 || r.bottom > H - 32) problems.push('.' + el.className + ' reaches the edge of the image')
+      })
+      if (lineCount(document.querySelector('.role')) > 2) problems.push('hero.byline.role wraps to more than 2 lines')
+
+      await nextFrames(2)
+      return finish(problems, { h1: h1Fit, chore: cardFit.size })
+    })()
+  })()
+</script>
+</body>
+</html>

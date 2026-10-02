@@ -11,8 +11,10 @@ node_modules
 .DS_Store
 # dist
 dist-ssr
+.ssr
 coverage
 *.local
+.env*.local
 
 /cypress/videos/
 /cypress/screenshots/
