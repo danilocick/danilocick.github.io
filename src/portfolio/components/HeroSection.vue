@@ -24,12 +24,13 @@ ui.track('heroCtaVisible', ctaEl)
 
 // ---- H1 strike geometry ------------------------------------------------------
 // The strike is drawn in a 200×12 design box stretched over "a mano"
-// (preserveAspectRatio="none" + non-scaling-stroke). Chrome scales pathLength
+// (preserveAspectRatio="none" + non-scaling-stroke). Chrome sizes pathLength
 // dashes in user units but strokes non-scaling paths in screen pixels, so a
-// stretched box draws too fast at small sizes (about 2× at 32px). After mount we
-// re-express the same path in a box where 1 user unit = 1 CSS px: same look,
-// and the 600ms draw is even in every engine. The SSR values are the spec's.
-// Template: keep `}}<svg` touching, so the nowrap span (and the strike) ends at "mano".
+// stretched box draws about 2× too fast at 32px and stops short of the end
+// once the box is wider than 200px (64px H1). After mount we re-express the
+// same path in a box where 1 user unit = 1 CSS px: identical look, and an even
+// 600ms draw in every engine. SSR keeps the spec's values (.no-js has a CSS
+// fallback). Template: keep `}}<svg` touching, so the nowrap span ends at "mano".
 const STRIKE_POINTS = [2, 7.2, 28, 4.6, 52, 8.8, 84, 6.4, 150, 4.2, 198, 6.8] as const
 
 function strikePath(sx: number, sy: number): string {
@@ -316,6 +317,13 @@ onBeforeUnmount(() => resizeObserver?.disconnect())
 }
 .hero[data-speed="fast"] .h1-manual path {
   transition-delay: calc(var(--n) * 160ms + 520ms);
+}
+/* Without JS the box is never calibrated, and Chrome would end a `1`-long dash
+   short of a stretched path wider than 200px (64px H1). A 1.5 dash covers the
+   whole stroke in every engine and still hides completely at 1.501. */
+.no-js .h1-manual path {
+  stroke-dasharray: 1.5 3;
+  stroke-dashoffset: 1.501;
 }
 .hero:has(#mode-auto:checked) .h1-manual path {
   stroke-dashoffset: 0;
