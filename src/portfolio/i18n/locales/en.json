@@ -1,13 +1,13 @@
 {
   "meta": {
-    "title": "Dani Hernández — Apps web y automatizaciones para pymes · Full Stack Developer",
-    "description": "Aplicaciones web y automatizaciones a medida para pymes: pedidos que entran solos e informes que se hacen solos. Dani Hernández, Full Stack Developer en Barcelona.",
-    "ogTitle": "Dani Hernández — Apps web y automatizaciones para pymes",
-    "ogImageAlt": "Lo que hoy hacéis a mano, en automático. Dani Hernández, apps web y automatizaciones para pymes."
+    "title": "Dani Hernández — Web apps & automation for small firms · Full Stack Developer",
+    "description": "Custom web apps and automation for small businesses: orders that come in on their own, reports that build themselves. Dani Hernández, Full Stack Developer in Barcelona.",
+    "ogTitle": "Dani Hernández — Web apps & automation for small firms",
+    "ogImageAlt": "What you do by hand, made automatic. Dani Hernández, web apps and automation for small firms."
   },
   "a11y": {
-    "skip": "Saltar al contenido",
-    "newTab": "(se abre en otra pestaña)"
+    "skip": "Skip to content",
+    "newTab": "(opens in a new tab)"
   },
   "brand": {
     "name": "Dani Hernández",
@@ -17,19 +17,19 @@
     "whatsapp": "WhatsApp"
   },
   "header": {
-    "home": "Dani Hernández, ir al inicio",
+    "home": "Dani Hernández, go to the top",
     "wordmark": "Dani Hernández"
   },
   "nav": {
-    "label": "Secciones",
-    "solve": "Qué resuelvo",
-    "experience": "Experiencia",
-    "talk": "Hablemos",
-    "menu": "Menú",
-    "close": "Cerrar"
+    "label": "Sections",
+    "solve": "What I solve",
+    "experience": "Experience",
+    "talk": "Let's talk",
+    "menu": "Menu",
+    "close": "Close"
   },
   "lang": {
-    "label": "Idioma",
+    "label": "Language",
     "names": {
       "es": "Castellano",
       "ca": "Català",
@@ -47,308 +47,308 @@
     }
   },
   "theme": {
-    "label": "Tema",
-    "system": "Sistema",
-    "light": "Claro",
-    "dark": "Oscuro"
+    "label": "Theme",
+    "system": "System",
+    "light": "Light",
+    "dark": "Dark"
   },
   "hero": {
     "byline": {
       "name": "Daniel Hernández",
       "place": "Barcelona",
-      "role": "Apps web y automatizaciones para pymes"
+      "role": "Web apps & automation for small firms"
     },
-    "h1": "Lo que hoy hacéis {manual}, en automático.",
-    "h1Manual": "a mano",
-    "subLead": "Aplicaciones web y automatizaciones a medida para pymes.",
-    "subExamples": "Pedidos que entran solos, informes que se hacen solos y programas que por fin se pasan los datos.",
-    "cta": "Cuéntame qué te quita tiempo",
-    "ctaNote": "Te respondo yo, en menos de 48 h laborables.",
+    "h1": "What you do {manual}, made automatic.",
+    "h1Manual": "by hand",
+    "subLead": "Custom web apps and automation for small businesses.",
+    "subExamples": "Orders that come in on their own, reports that build themselves, and programs that finally share their data.",
+    "cta": "Tell me what eats up your time",
+    "ctaNote": "You'll hear back from me within 2 working days.",
     "proof": {
-      "years": "5+ años haciendo software para empresas",
-      "apps": "30+ aplicaciones en uso real",
-      "solo": "Una sola persona, de principio a fin",
-      "langs": "Hablo castellano, {ca} e {en}"
+      "years": "5+ years building software for companies",
+      "apps": "30+ applications in real use",
+      "solo": "One person, start to finish",
+      "langs": "I speak Spanish, Catalan and {en}"
     }
   },
   "chores": {
-    "title": "¿Te suena esta semana?",
-    "legend": "Modo de las tareas de ejemplo",
-    "man": "A MANO",
-    "auto": "AUTOMÁTICO",
+    "title": "Sound like your week?",
+    "legend": "Mode for the example tasks",
+    "man": "BY HAND",
+    "auto": "AUTOMATIC",
     "items": {
       "pedidos": {
-        "text": "Pasar los pedidos del email al Excel",
-        "note": "Ahora llegan solos a un único sitio"
+        "text": "Copy emailed orders into Excel",
+        "note": "Now they arrive on their own"
       },
       "informe": {
-        "text": "Montar el informe de ventas del mes",
-        "note": "Se actualiza solo"
+        "text": "Build the monthly sales report",
+        "note": "It updates itself"
       },
       "version": {
-        "text": "Buscar cuál es el bueno: presu_v7_FINAL(2).xlsx",
-        "note": "Una sola versión, siempre al día"
+        "text": "Find the right one: quote_v7_FINAL(2).xlsx",
+        "note": "One version, always up to date"
       },
       "copiar": {
-        "text": "Copiar datos de un programa a otro",
-        "note": "Ahora se hablan entre ellos"
+        "text": "Copy data from one program to another",
+        "note": "Now they talk to each other"
       }
     },
     "status": {
-      "man": "A mano · {n} tarea pendiente | A mano · {n} tareas pendientes",
-      "auto": "Automático · ninguna pendiente"
+      "man": "By hand · {n} task to do | By hand · {n} tasks to do",
+      "auto": "Automatic · nothing left to do"
     },
     "hint": {
-      "man": "Gira el selector a AUTOMÁTICO.",
-      "auto": "Vuelve a A MANO para ver el antes."
+      "man": "Turn the switch to AUTOMATIC.",
+      "auto": "Turn it back to BY HAND to see the before."
     },
-    "caption": "Ejemplos de tareas que automatizo.",
-    "srSolution": "Solución:",
-    "announceAuto": "Modo automático: las tareas de ejemplo ya se hacen solas.",
-    "announceMan": "Modo a mano: las tareas de ejemplo vuelven a estar pendientes."
+    "caption": "Examples of tasks I automate.",
+    "srSolution": "Solution:",
+    "announceAuto": "Automatic mode: the example tasks now run by themselves.",
+    "announceMan": "By-hand mode: the example tasks are back on the to-do list."
   },
   "picker": {
-    "eyebrow": "Qué resuelvo",
-    "h2": "Tu turno: ¿cuáles tienes tú en la lista?",
-    "intro": "Marca las que te suenen. Te cuento cómo lo resolvería y tu mensaje para mí se escribe solo.",
-    "techPrefix": "Con:",
-    "techPrefixSr": "Tecnologías:",
-    "caseLink": "Ver un caso real",
+    "eyebrow": "What I solve",
+    "h2": "Your turn: which ones are on your list?",
+    "intro": "Tick the ones that sound familiar. I'll tell you how I'd solve them, and your message to me writes itself.",
+    "techPrefix": "With:",
+    "techPrefixSr": "Technologies:",
+    "caseLink": "See a real case",
     "other": {
-      "label": "Otra cosa:",
-      "aria": "Describe otra tarea que te quite tiempo",
-      "placeholder": "Escríbela con tus palabras"
+      "label": "Something else:",
+      "aria": "Describe another task that eats up your time",
+      "placeholder": "Put it in your own words"
     },
-    "closing": "¿Lo tuyo no está en la lista? Cuéntamelo igual.",
-    "cta": "Cuéntame qué te quita tiempo | Hablar de esta tarea | Hablar de estas {n} tareas",
-    "live": "No has marcado ninguna tarea | Has marcado 1 tarea | Has marcado {n} tareas",
-    "goAnnounce": "Te llevo al formulario con tus tareas ya escritas."
+    "closing": "Not on the list? Tell me anyway.",
+    "cta": "Tell me what eats up your time | Talk about this task | Talk about these {n} tasks",
+    "live": "You haven't ticked any tasks | You've ticked 1 task | You've ticked {n} tasks",
+    "goAnnounce": "Taking you to the form with your tasks already written in."
   },
   "ticket": {
-    "title": "Tu lista",
-    "count": "Ninguna tarea marcada | 1 tarea marcada | {n} tareas marcadas",
-    "empty": "Marca alguna tarea… o escríbeme directamente.",
-    "clear": "Borrar selección"
+    "title": "Your list",
+    "count": "No tasks ticked | 1 task ticked | {n} tasks ticked",
+    "empty": "Tick a task… or just write to me.",
+    "clear": "Clear selection"
   },
   "problems": {
     "copiar-datos": {
-      "pain": "Copiamos datos a mano de un Excel a otro, o a otro programa.",
-      "answer": "Automatizo el traspaso para que nadie tenga que copiar datos a mano.",
-      "tech": "SQL Server · PostgreSQL · C# · migración y automatización de datos",
-      "short": "Copiar datos a mano",
-      "message": "copiar datos a mano de un Excel a otro"
+      "pain": "We copy data by hand from one spreadsheet to another, or into another program.",
+      "answer": "I automate the transfer so nobody has to copy data by hand.",
+      "tech": "SQL Server · PostgreSQL · C# · data migration and automation",
+      "short": "Copying data by hand",
+      "message": "copying data by hand from one spreadsheet to another"
     },
     "informe": {
-      "pain": "Cada mes perdemos horas montando el mismo informe.",
-      "answer": "Un panel que se actualiza solo y se entiende de un vistazo.",
+      "pain": "Every month we lose hours building the same report.",
+      "answer": "A dashboard that updates itself and makes sense at a glance.",
       "tech": "Power BI · Tableau · SQL Server",
-      "short": "El informe de cada mes",
-      "message": "montar cada mes el mismo informe"
+      "short": "The monthly report",
+      "message": "building the same report every month"
     },
     "pedidos": {
-      "pain": "Los pedidos y las solicitudes nos llegan por email, teléfono y WhatsApp, y algo siempre se pierde.",
-      "answer": "Una aplicación web a medida donde todo entra por el mismo sitio.",
+      "pain": "Orders and requests reach us by email, phone and WhatsApp, and something always gets lost.",
+      "answer": "A custom web app where everything comes in through one place.",
       "tech": "Vue 3 · TypeScript · ASP.NET Core · Entity Framework Core",
-      "short": "Pedidos por mil canales",
-      "message": "los pedidos que llegan por mil canales"
+      "short": "Orders from every channel",
+      "message": "orders arriving through every channel"
     },
     "conectar": {
-      "pain": "Nuestros programas no se hablan entre sí.",
-      "answer": "Los conecto para que la información pase sola de uno a otro.",
-      "tech": "ASP.NET Core · C# · APIs REST con arquitectura por capas",
-      "short": "Programas que no se hablan",
-      "message": "que nuestros programas no se hablen entre sí"
+      "pain": "Our programs don't talk to each other.",
+      "answer": "I connect them so information flows from one to the other on its own.",
+      "tech": "ASP.NET Core · C# · layered REST APIs",
+      "short": "Programs that don't talk",
+      "message": "our programs not talking to each other"
     },
     "renovar": {
-      "pain": "Tenemos una herramienta interna vieja que nadie se atreve a tocar.",
-      "answer": "La renuevo por partes, módulo a módulo.",
-      "tech": "Micro-frontends con Vue 3 y Module Federation · Vite",
-      "short": "La herramienta interna vieja",
-      "message": "renovar una herramienta interna vieja"
+      "pain": "We have an old internal tool nobody dares to touch.",
+      "answer": "I rebuild it in parts, one module at a time.",
+      "tech": "Micro-frontends with Vue 3 and Module Federation · Vite",
+      "short": "The old internal tool",
+      "message": "rebuilding an old internal tool"
     },
     "excel": {
-      "pain": "Dependemos de un Excel enorme que solo entiende una persona.",
-      "answer": "Lo paso a una aplicación sencilla, con usuarios y permisos, para que no dependa de nadie.",
+      "pain": "We depend on a huge spreadsheet only one person understands.",
+      "answer": "I turn it into a simple app with users and permissions, so it doesn't depend on any one person.",
       "tech": "Vue 3 · ASP.NET Core · SQL Server · Azure",
-      "short": "El Excel que solo entiende uno",
-      "message": "depender de un Excel enorme que solo entiende una persona"
+      "short": "The one-person spreadsheet",
+      "message": "depending on a huge spreadsheet only one person understands"
     }
   },
   "about": {
-    "eyebrow": "Experiencia",
-    "h2": "Quién está detrás",
-    "photoAlt": "Retrato de Daniel Hernández",
-    "bio1": "Soy Dani, desarrollador full stack. Vivo en Santa Coloma de Gramenet (Barcelona) y llevo más de cinco años haciendo software para empresas.",
-    "bio2": "Me ocupo de lo que ves en pantalla, de lo que lo mueve por dentro y de los datos que lo alimentan.",
+    "eyebrow": "Experience",
+    "h2": "Who's behind this",
+    "photoAlt": "Portrait of Daniel Hernández",
+    "bio1": "I'm Dani, a full stack developer. I live in Santa Coloma de Gramenet (Barcelona) and have spent more than five years building software for companies.",
+    "bio2": "I take care of what you see on screen, what drives it underneath, and the data that feeds it.",
     "case": {
-      "title": "Un caso real",
-      "body": "Desde septiembre de 2021 soy desarrollador full stack en Unex, una empresa industrial de material eléctrico. Allí desarrollo las aplicaciones internas del equipo, las conexiones entre sus programas y la automatización y migración de sus datos.",
+      "title": "A real case",
+      "body": "Since September 2021 I've been a full stack developer at Unex, an industrial electrical-equipment manufacturer. There I build the team's internal applications, the connections between their programs, and the automation and migration of their data.",
       "points": {
         "apps": {
-          "term": "Aplicaciones internas",
-          "value": "Por módulos, con micro-frontends en Vue 3 y Module Federation."
+          "term": "Internal applications",
+          "value": "Built in modules, with Vue 3 micro-frontends and Module Federation."
         },
         "connections": {
-          "term": "Conexiones entre programas",
-          "value": "APIs REST con ASP.NET Core 10, EF Core y SQL Server, en capas versionadas."
+          "term": "Connections between programs",
+          "value": "REST APIs with ASP.NET Core 10, EF Core and SQL Server, in versioned layers."
         },
         "data": {
-          "term": "Datos",
-          "value": "Automatizaciones y procesos de migración."
+          "term": "Data",
+          "value": "Automations and migration processes."
         }
       },
-      "note": "Son herramientas internas, así que aquí no hay capturas ni cifras."
+      "note": "These are internal tools, so there are no screenshots or figures here."
     },
-    "testimonials": "Lo que dicen quienes han trabajado conmigo",
+    "testimonials": "What people I've worked with say",
     "timeline": {
-      "title": "Trayectoria",
-      "present": "actualidad"
+      "title": "Career",
+      "present": "present"
     },
     "facts": {
-      "title": "Ficha rápida",
+      "title": "Quick facts",
       "role": {
-        "term": "Rol",
+        "term": "Role",
         "value": "Full Stack Developer"
       },
       "experience": {
-        "term": "Experiencia",
-        "value": "5+ años · 30+ aplicaciones en uso real"
+        "term": "Experience",
+        "value": "5+ years · 30+ applications in real use"
       },
       "base": {
-        "term": "Base",
+        "term": "Based in",
         "value": "Santa Coloma de Gramenet (Barcelona)"
       },
       "mode": {
-        "term": "Modalidad",
-        "value": "En remoto, con base en Barcelona"
+        "term": "Work mode",
+        "value": "Remote, based in Barcelona"
       },
       "langs": {
-        "term": "Idiomas",
-        "value": "Castellano y {ca} (nativo) · {en} (nivel alto)"
+        "term": "Languages",
+        "value": "Spanish and Catalan (native) · {en} (advanced)"
       },
       "education": {
-        "term": "Formación",
-        "value": "CFGS {dam} (2021) · CFGS {asir} (2020)",
+        "term": "Education",
+        "value": "Higher vocational diplomas: {dam} (2021) · {asir} (2020)",
         "dam": "DAM",
-        "damTitle": "Desarrollo de Aplicaciones Multiplataforma",
+        "damTitle": "Multiplatform Application Development",
         "asir": "ASIR",
-        "asirTitle": "Administración de Sistemas Informáticos en Red"
+        "asirTitle": "Network Computer Systems Administration"
       },
       "interest": {
-        "term": "Ahora me interesa",
-        "value": "Microservicios en Azure"
+        "term": "Currently interested in",
+        "value": "Microservices on Azure"
       }
     },
-    "github": "Ver mi GitHub",
-    "cv": "Descargar CV (PDF)"
+    "github": "See my GitHub",
+    "cv": "Download CV (PDF)"
   },
   "experience": {
     "unex": {
-      "role": "Desarrollador Full Stack",
-      "sector": "Empresa industrial de material eléctrico"
+      "role": "Full Stack Developer",
+      "sector": "Industrial electrical-equipment manufacturer"
     },
     "avp": {
-      "role": "Prácticas · Help Desk"
+      "role": "Internship · Help Desk"
     }
   },
   "stack": {
-    "title": "Para perfiles técnicos",
-    "intro": "El detalle, para quien lo necesite.",
+    "title": "For technical readers",
+    "intro": "The detail, for those who need it.",
     "groups": {
-      "front": "Front",
-      "back": "Back",
-      "data": "Datos",
-      "cloud": "Nube y entrega"
+      "front": "Front end",
+      "back": "Back end",
+      "data": "Data",
+      "cloud": "Cloud and delivery"
     },
     "items": {
-      "layeredApis": "APIs REST con arquitectura por capas",
-      "dataMigration": "migración y automatización de datos"
+      "layeredApis": "layered REST APIs",
+      "dataMigration": "data migration and automation"
     }
   },
   "guides": {
-    "title": "Guías que he escrito",
+    "title": "Guides I've written",
     "items": {
-      "efcore": "Migraciones con Entity Framework Core",
-      "aspnet": "APIs con ASP.NET Core",
+      "efcore": "Migrations with Entity Framework Core",
+      "aspnet": "APIs with ASP.NET Core",
       "keyvault": "Azure Key Vault"
     }
   },
   "contact": {
-    "eyebrow": "Lo que queda en la lista",
-    "itemProject": "Hablar con Dani sobre tu proyecto",
-    "itemWrite": "Escribir a Dani",
-    "sub": "Cuéntamelo con tus palabras: no hace falta saber de tecnología.",
-    "availability": "Trabajo en proyectos acotados, en remoto, con presupuesto cerrado antes de empezar.",
+    "eyebrow": "What's left on the list",
+    "itemProject": "Talk to Dani about your project",
+    "itemWrite": "Write to Dani",
+    "sub": "Tell me in your own words: no tech knowledge needed.",
+    "availability": "I take on well-defined projects, remotely, with a fixed quote agreed before we start.",
     "next": {
-      "title": "Qué pasa después",
-      "1": "Te respondo y, si hace falta, hacemos una llamada de 30 minutos, gratis.",
-      "2": "Te envío por escrito qué haría, en cuánto tiempo y por cuánto.",
-      "3": "Empezamos solo si te encaja."
+      "title": "What happens next",
+      "1": "I reply and, if useful, we have a free 30-minute call.",
+      "2": "I send you in writing what I'd do, how long it takes and what it costs.",
+      "3": "We only start if it works for you."
     },
     "f": {
-      "name": "Tu nombre",
-      "email": "Tu email",
-      "company": "Empresa (opcional)",
-      "message": "¿Qué te quita tiempo?",
-      "messagePh": "Ej.: cada lunes pasamos los pedidos del correo a un Excel y después al programa de facturación…"
+      "name": "Your name",
+      "email": "Your email",
+      "company": "Company (optional)",
+      "message": "What eats up your time?",
+      "messagePh": "E.g. every Monday we copy orders from email into a spreadsheet and then into the invoicing program…"
     },
-    "prefill": "Hola, Dani: me gustaría quitarme de encima esto: {tasks}. ¿Lo hablamos?",
-    "regenerate": "Volver a escribir el mensaje con mis tareas",
-    "submit": "Enviar y tachar",
-    "sending": "Enviando…",
-    "submitMail": "Escribir desde mi correo",
-    "mailNote": "Se abrirá tu programa de correo con el mensaje ya escrito.",
-    "success": "¡Tachado! Te contestaré a {email}.",
-    "handoff": "Te he abierto tu programa de correo con el mensaje ya escrito. Si no se ha abierto, copia mi dirección y escríbeme desde donde prefieras.",
-    "error": "No se ha podido enviar. Tu mensaje sigue aquí: puedes escribirme directamente a {email}.",
-    "tryMail": "Probar desde mi correo",
+    "prefill": "Hi Dani, I'd like to get this off my plate: {tasks}. Shall we talk?",
+    "regenerate": "Rewrite the message with my tasks",
+    "submit": "Send and cross it off",
+    "sending": "Sending…",
+    "submitMail": "Write from my email app",
+    "mailNote": "Your email app will open with the message already written.",
+    "success": "Crossed off! I'll reply to {email}.",
+    "handoff": "I've opened your email app with the message already written. If it didn't open, copy my address and write from wherever you prefer.",
+    "error": "It couldn't be sent. Your message is still here: you can write to me directly at {email}.",
+    "tryMail": "Try from my email app",
     "v": {
-      "name": "Dime cómo te llamas.",
-      "emailMissing": "Necesito tu email para poder contestarte.",
-      "emailInvalid": "Revisa el email: parece que le falta algo.",
-      "message": "Cuéntamelo aunque sea en una frase.",
-      "summary": "Revisa los campos marcados."
+      "name": "Tell me your name.",
+      "emailMissing": "I need your email so I can reply.",
+      "emailInvalid": "Check the email: something seems to be missing.",
+      "message": "Tell me, even if it's just one sentence.",
+      "summary": "Please check the highlighted fields."
     },
-    "privacy": "Responsable: Daniel Hernández Martín. Finalidad: responder a tu mensaje. {processor}Derechos: acceso, rectificación y supresión escribiendo a {email}. Más información en {legal}.",
-    "privacyProcessor": "El envío pasa por Web3Forms, el proveedor del formulario.",
-    "privacyLegal": "Aviso legal y privacidad",
-    "direct": "¿Prefieres escribirme directamente?",
-    "copy": "Copiar",
-    "copied": "¡Copiado!",
-    "copiedLive": "Email copiado",
-    "waText": "Hola, Dani: vengo de tu web.",
+    "privacy": "Controller: Daniel Hernández Martín. Purpose: replying to your message. {processor}Rights: access, rectification and erasure by writing to {email}. More in {legal}.",
+    "privacyProcessor": "Submissions go through Web3Forms, the form provider.",
+    "privacyLegal": "Legal notice and privacy",
+    "direct": "Prefer to write to me directly?",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "copiedLive": "Email copied",
+    "waText": "Hi Dani, I found you through your website.",
     "trilingual": {
       "es": "Escríbeme en castellano.",
       "ca": "Escriu-me en català.",
       "en": "Write to me in English."
     },
-    "subject": "Proyecto: {first}",
-    "subjectFallback": "Proyecto desde la web"
+    "subject": "Project: {first}",
+    "subjectFallback": "Project from the website"
   },
   "sticky": {
-    "label": "Contacto rápido",
-    "cta": "Hablemos | Hablar de mi tarea | Hablar de mis {n} tareas"
+    "label": "Quick contact",
+    "cta": "Let's talk | Talk about my task | Talk about my {n} tasks"
   },
   "footer": {
     "line": "Daniel Hernández Martín · Santa Coloma de Gramenet (Barcelona)",
     "copyright": "© {year}",
-    "legal": "Aviso legal y privacidad",
-    "colophon": "Tipografías: Archivo y Atkinson Hyperlegible Next, servidas desde este dominio. Hecho con Vue 3, Vite y Tailwind CSS. Sin cookies ni analítica.",
-    "top": "Volver arriba"
+    "legal": "Legal notice and privacy",
+    "colophon": "Typefaces: Archivo and Atkinson Hyperlegible Next, served from this domain. Built with Vue 3, Vite and Tailwind CSS. No cookies, no analytics.",
+    "top": "Back to top"
   },
   "legal": {
-    "noticeTitle": "Aviso legal",
-    "holder": "Titular: {name}",
-    "nif": "NIF: {nif}",
-    "address": "Domicilio: {address}",
+    "noticeTitle": "Legal notice",
+    "holder": "Owner: {name}",
+    "nif": "Tax ID (NIF): {nif}",
+    "address": "Address: {address}",
     "email": "Email: {email}",
-    "activity": "Actividad: desarrollo de software a medida.",
-    "privacyTitle": "Privacidad",
-    "privacy": "Los datos del formulario (nombre, email, empresa y mensaje) solo se usan para responderte y, si llegamos a trabajar juntos, para preparar la propuesta. Base legal: tu consentimiento al enviar el mensaje y las medidas precontractuales que pides. {processor} Los conservo mientras dure la conversación y, después, el tiempo que exija la ley. Puedes pedir acceso, rectificación, supresión, oposición, limitación o portabilidad en {email}, y reclamar ante la Agencia Española de Protección de Datos ({aepd}).",
-    "privacyProcessor": "El formulario lo procesa Web3Forms como encargado del tratamiento; no cedo tus datos a nadie más.",
-    "privacyNoProcessor": "No cedo tus datos a nadie.",
+    "activity": "Activity: custom software development.",
+    "privacyTitle": "Privacy",
+    "privacy": "The form data (name, email, company and message) is used only to reply to you and, if we end up working together, to prepare the proposal. Legal basis: your consent when you send the message and the pre-contractual steps you request. {processor} I keep it for as long as the conversation lasts and, after that, for as long as the law requires. You can request access, rectification, erasure, objection, restriction or portability at {email}, and lodge a complaint with the Spanish Data Protection Agency ({aepd}).",
+    "privacyProcessor": "Web3Forms processes the form as a data processor; I don't share your data with anyone else.",
+    "privacyNoProcessor": "I don't share your data with anyone.",
     "aepd": "aepd.es",
     "cookiesTitle": "Cookies",
-    "cookies": "Esta web no usa cookies ni analítica. Solo guarda en tu navegador el tema que elijas y, mientras dura la visita, las tareas que marcas y el borrador de tu mensaje."
+    "cookies": "This website uses no cookies and no analytics. It only stores the theme you choose in your browser and, during your visit, the tasks you tick and the draft of your message."
   }
 }

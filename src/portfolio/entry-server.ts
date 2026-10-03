@@ -14,12 +14,13 @@ const escAttr = (s: string) =>
   s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 const escText = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 
-function personJsonLd(): Record<string, unknown> {
+/** §6.8 Person. Names are proper nouns (identical in every locale file). */
+function personJsonLd(t: (key: string) => string): Record<string, unknown> {
   return {
     '@context': 'https://schema.org',
     '@type': 'Person',
-    name: 'Daniel Hernández Martín',
-    alternateName: 'Daniel Hernández',
+    name: t('brand.fullName'), // "Daniel Hernández Martín"
+    alternateName: t('brand.name'), // "Dani Hernández"
     jobTitle: 'Full Stack Developer',
     url: siteUrl,
     image: `${siteUrl}img/dani-720.jpg`,
@@ -50,9 +51,10 @@ function personJsonLd(): Record<string, unknown> {
 
 /**
  * Head tags in §6.8 order, from <title> to the JSON-LD (no twitter:* tags — ADAPTATIONS E).
- * The template already holds charset, viewport, theme-color, color-scheme, the
- * no-flash script and the font preload; the prerender inserts this at <!--head-->,
- * removes the template's dev <title>, and adds the inlined <style>.
+ * The template already holds charset, viewport, theme-color, color-scheme and the
+ * no-flash script; the prerender inserts this at <!--head-->, removes the template's
+ * dev <title>, and adds the inlined <style> right before the JSON-LD (after the
+ * Archivo preload, the only font preload — ADAPTATIONS F).
  */
 export function headToHtml(head: HeadData): string {
   const tags: string[] = [
@@ -75,6 +77,7 @@ export function headToHtml(head: HeadData): string {
     `<link rel="icon" href="/favicon.svg" type="image/svg+xml">`,
     `<link rel="icon" href="/favicon-32.png" sizes="32x32">`,
     `<link rel="apple-touch-icon" href="/apple-touch-icon.png">`,
+    `<link rel="preload" href="/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>`,
     `<script type="application/ld+json">${JSON.stringify(head.jsonLd).replace(/</g, '\\u003c')}</script>`,
   ]
   return tags.join('\n    ')
@@ -101,7 +104,7 @@ export async function render(
       ...SUPPORTED_LOCALES.map((l) => ({ hreflang: l, href: pageUrl(l) })),
       { hreflang: 'x-default' as const, href: pageUrl('es') },
     ],
-    jsonLd: personJsonLd(),
+    jsonLd: personJsonLd((key) => t(key)),
   }
 
   return { html, head, headHtml: headToHtml(head) }
